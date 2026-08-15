@@ -5,6 +5,7 @@ import App from './App';
 import './styles.css';
 import './catalog-pass.css';
 import './catalog-images.css';
+import './premium-overrides.css';
 
 const CLOUDINARY = 'https://res.cloudinary.com/m2w7btvw/image/upload/';
 const syncProductImages = () => {
