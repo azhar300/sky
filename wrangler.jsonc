@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "skyline-global-industries",
+  "name": "sky",
   "compatibility_date": "2026-08-15",
   "assets": {
     "directory": "./dist",
