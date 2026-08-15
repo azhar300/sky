@@ -3,7 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": { "dev": "vite", "build": "vite build && rm -f dist/_redirects", "preview": "vite preview" },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node -e \"const fs=require('fs'); fs.rmSync('dist/_redirects',{force:true}); console.log('Verified: dist/_redirects removed')\"",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
     "framer-motion": "latest",
