@@ -11,9 +11,7 @@ import './asset-visibility-fix.css';
 import './hero-redesign.css';
 import './reference-redesign.css';
 import './manufacturing-quality-overrides.css';
-import './page-visual-repair.css';
 import './header-brand-final.css';
-import './page-banner-final.css';
 import './header-colors-final.css';
 
 function ScrollToTop() {
