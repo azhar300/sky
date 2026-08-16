@@ -5,13 +5,15 @@ export default defineConfig({
   plugins: [
     react(),
     {
-      name: 'skyline-cloudinary-product-paths',
+      name: 'skyline-catalog-normalizer',
       transform(code, id) {
         if (id.endsWith('/src/App.tsx')) {
-          return code.replaceAll(
-            'https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/',
-            'https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/products/'
-          );
+          return code
+            .replaceAll(
+              'https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/',
+              'https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/products/'
+            )
+            .replace("prefix: 'SLGI-MG', count: 15", "prefix: 'SLGI-MG', count: 12");
         }
         return null;
       },
