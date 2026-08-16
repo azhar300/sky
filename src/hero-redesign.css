@@ -26,14 +26,13 @@
 .catalogCurve{height:60px!important;background:var(--sg-deep)!important}
 .catalogCurve:before{background:linear-gradient(90deg,var(--sg-cyan),transparent)!important}
 
-/* The hero is now one deliberate art-directed composition built from the real catalogue images. */
-.heroCatalogArt .heroProductCollage{background:url('/images/hero-composition.svg') center center/contain no-repeat!important}
-.heroCatalogArt .heroProductCollage>img,.heroCatalogArt .heroProductCollage>.heroTag{display:none!important}
-.heroCatalogArt .worldDisc{opacity:.16!important}
-.heroCatalogArt:after{opacity:.55!important}
-
 .galleryTitle p{font-size:0!important;max-width:420px!important}
 .galleryTitle p:after{content:"A curated view of the glove range, product presentation and brand direction.";font-size:14px;line-height:1.8;color:#657586}
 
 @media(max-width:900px){.heroCatalog:before{background:linear-gradient(180deg,#fff 0 48%,#eef5f8 48% 100%)}.heroCatalogGrid{grid-template-columns:1fr!important}.heroCatalogCopy{padding-top:75px!important}.heroCatalogArt{height:530px!important}.heroCatalogArt:before{width:92%!important;right:-25%!important}.heroProductCollage{background-size:cover!important;background-position:center!important}}
 @media(max-width:620px){.heroCatalogArt{height:430px!important}.heroProductCollage{background-size:cover!important}.heroCatalogCopy h1{font-size:48px!important}}
+
+/* FINAL IMAGE VISIBILITY OVERRIDE — this file is loaded after the earlier experimental CSS. */
+.heroCatalogArt .heroProductCollage{background:none!important}
+.heroCatalogArt .heroProductCollage>img{display:block!important;visibility:visible!important;opacity:1!important;content:normal!important}
+.categoryArt img,.productVisual img,.detailArt img,.aboutPhotoFrame img,.galleryArt img,.oemProductPhoto,.oemPage .oemProductPhoto{display:block!important;visibility:visible!important;opacity:1!important;mix-blend-mode:normal!important;content:normal!important}
