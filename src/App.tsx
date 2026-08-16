@@ -1,12 +1,11 @@
 import { useMemo, useState, useEffect } from 'react';
-import { Link, NavLink, Route, Routes, useParams } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useParams, useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowDownRight, ArrowRight, Bike, Box, CircleCheck, Factory, Globe2, Hammer, Mail, Menu, MessageCircle, ShieldCheck, Sparkles, Truck, X } from 'lucide-react';
 
 const contact = { phone: '+92 342 7189884', email: 'skylineglobalindustries@gmail.com', location: 'Sialkot, Punjab, Pakistan' };
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xoeankkr';
 
-// These are the verified Cloudinary assets in the `products` folder.
-// Most are PNG; two catalogue assets are JPG.
 const cloudinary = (code: string) => {
   const extension = code === 'SLGI-RAG-06' || code === 'SLGI-CG-08' ? 'jpg' : 'png';
   return `https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/${code}.${extension}`;
@@ -81,6 +80,42 @@ function Manufacturing(){return <><PageHero eyebrow="MANUFACTURING" title="Produ
 function Quality(){return <><PageHero eyebrow="QUALITY" title="Quality control at every stage." copy="Our quality positioning is built around inspection, consistency and dependable export supply."/><section className="section"><div className="container qualityGrid"><div><div className="eyebrow">QUALITY SYSTEM</div><h2>Built for buyer confidence.</h2><p>Every production programme should be aligned around agreed specifications, inspection points and final packing checks.</p></div><div className="qualityCards">{['Incoming material checks','In-process inspection','Final product inspection','Packing verification'].map((x,i)=><div key={x}><b>0{i+1}</b><span>{x}</span></div>)}</div></div></section></>}
 function Credentials(){return <><PageHero eyebrow="COMPANY CREDENTIALS" title="A manufacturing profile buyers can evaluate."/><section className="section"><div className="container credentialGrid">{[['01','SIALKOT BASED','Manufacturing and export operations in Sialkot, Pakistan.'],['02','B2B FOCUS','Serving brands, wholesalers, distributors and importers.'],['03','OEM READY','Private-label and custom glove manufacturing support.']].map(([n,t,c])=><div key={n}><b>{n}</b><h3>{t}</h3><p>{c}</p></div>)}</div></section></>}
 function Gallery(){const images=['SLGI-MG-01','SLGI-RAG-01','SLGI-GG-01','SLGI-FG-01','SLGI-CG-01','SLGI-TG-01','SLGI-MG-07','SLGI-TG-04'];return <><PageHero eyebrow="VISUAL CATALOGUE" title="A closer look at the Skyline range." copy="Selected product references from the current launch catalogue."/><section className="section"><div className="container galleryGrid">{images.map(code=><div className="galleryItem" key={code}><img src={cloudinary(code)} alt={code}/><span>{code}</span></div>)}</div></section></>}
-function Contact(){return <><PageHero eyebrow="CONTACT" title="Tell us what you need to manufacture." copy="Send your product, branding and sourcing requirements to the Skyline team."/><section className="section"><div className="container contactGrid"><div><div className="eyebrow">DIRECT</div><h2>Start a B2B conversation.</h2><p>For OEM, private-label and catalogue enquiries, contact Skyline directly.</p><a className="quoteBtn" href={`mailto:${contact.email}`}>Email Skyline <ArrowRight size={16}/></a></div><div className="contactCard"><strong>{contact.email}</strong><span>{contact.phone}</span><span>{contact.location}</span></div></div></section></>}
+function Contact(){
+  const [searchParams] = useSearchParams();
+  const productParam = searchParams.get('product') || '';
+  const matchedProduct = products.find((p) => p.code === productParam);
+  const [status, setStatus] = useState<'idle'|'submitting'|'success'|'error'>('idle');
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault(); setStatus('submitting');
+    const form = event.currentTarget; const data = new FormData(form);
+    data.set('_subject', `Skyline B2B Inquiry${productParam ? ` — ${productParam}` : ''}`);
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error('Form submission failed');
+      form.reset(); setStatus('success');
+    } catch { setStatus('error'); }
+  }
+  return <><PageHero eyebrow="CONTACT / REQUEST A QUOTE" title="Tell us what you need to manufacture." copy="Send your product, branding and sourcing requirements to the Skyline team."/><section className="section"><div className="container contactGrid">
+    <div><div className="eyebrow">B2B INQUIRY</div><h2>Start a serious sourcing conversation.</h2><p>For OEM, private-label and catalogue enquiries, send your requirements through the form. Product and SKU are prefilled when you arrive from a product page.</p><div className="contactCard"><strong>{contact.email}</strong><span>{contact.phone}</span><span>{contact.location}</span></div></div>
+    <form className="contactForm" onSubmit={handleSubmit} noValidate>
+      <input type="hidden" name="form_type" value="B2B Product Inquiry" /><input type="hidden" name="source" value="Skyline Global Industries website" />
+      <div className="formGrid">
+        <label>Full Name *<input name="name" type="text" autoComplete="name" required placeholder="Your full name" /></label>
+        <label>Company Name *<input name="company" type="text" autoComplete="organization" required placeholder="Company / brand" /></label>
+        <label>Business Email *<input name="email" type="email" autoComplete="email" required placeholder="name@company.com" /></label>
+        <label>WhatsApp / Phone *<input name="phone" type="tel" autoComplete="tel" required placeholder="+92..." /></label>
+        <label>Country<input name="country" type="text" autoComplete="country-name" placeholder="Country / market" /></label>
+        <label>Product / SKU<input name="product" type="text" value={productParam} readOnly={Boolean(productParam)} placeholder="Product code" /></label>
+        <label>Product Category<select name="category" defaultValue={matchedProduct?.categoryName || ''}><option value="">Select category</option>{categories.map((c)=><option key={c.slug} value={c.name}>{c.name}</option>)}<option value="OEM / Custom">OEM / Custom</option></select></label>
+        <label>Estimated Quantity<input name="quantity" type="text" placeholder="e.g. 1,000 pairs" /></label>
+        <label className="fullWidth">OEM / Private Label<select name="oem_private_label" defaultValue="Not specified"><option>Not specified</option><option>Yes — OEM / Private Label</option><option>No — Catalogue product</option></select></label>
+        <label className="fullWidth">Requirement / Message *<textarea name="message" required rows={6} placeholder="Tell us about your product, branding, specifications, quantity, packaging or sourcing requirements..." /></label>
+      </div>
+      <button className="quoteBtn formSubmit" type="submit" disabled={status === 'submitting'}>{status === 'submitting' ? 'Sending Inquiry...' : 'Send Inquiry'} <ArrowRight size={16}/></button>
+      {status === 'success' && <div className="formNotice success" role="status">Thank you. Your inquiry has been received. Our export team will contact you shortly.</div>}
+      {status === 'error' && <div className="formNotice error" role="alert">We could not send the inquiry right now. Please try again or contact Skyline directly at {contact.email}.</div>}
+    </form>
+  </div></section></>;
+}
 function CTA(){return <section className="cta"><div className="container"><div><div className="eyebrow light">READY TO SOURCE?</div><h2>Build your next glove range with Skyline.</h2></div><Link className="lightBtn" to="/contact">Request a Quote <ArrowRight size={16}/></Link></div></section>}
 function NotFound(){return <section className="section"><div className="container"><div className="eyebrow">404</div><h1>Page not found.</h1><Link className="quoteBtn" to="/">Return home <ArrowRight size={16}/></Link></div></section>}
