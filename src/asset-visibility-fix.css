@@ -1,0 +1,12 @@
+/* Deterministic catalogue presentation fix. */
+.heroCatalogArt .heroProductCollage{position:absolute!important;inset:0!important;display:block!important;overflow:visible!important;z-index:8!important}
+.heroCatalogArt .heroProductCollage .heroProduct{position:absolute!important;display:block!important;visibility:visible!important;opacity:1!important;object-fit:contain!important;mix-blend-mode:normal!important}
+.heroCatalogArt .heroProductCollage .p1{left:16px!important;bottom:82px!important;top:auto!important}
+.heroCatalogArt .heroProductCollage .p2{left:112px!important;bottom:109px!important;top:auto!important}
+.heroCatalogArt .heroProductCollage .p3{left:222px!important;bottom:74px!important;top:auto!important}
+.heroCatalogArt .heroProductCollage .p4{right:58px!important;left:auto!important;bottom:107px!important;top:auto!important}
+.heroCatalogArt .heroProductCollage .p5{right:-12px!important;left:auto!important;bottom:78px!important;top:auto!important}
+.categoryArt img,.productVisual img,.detailArt img,.aboutPhotoFrame img,.oemProductPhoto{display:block!important;visibility:visible!important;opacity:1!important}
+.categoryArt img,.productVisual img,.detailArt img,.aboutPhotoFrame img,.oemProductPhoto{mix-blend-mode:multiply!important}
+@media(max-width:900px){.heroCatalogArt .heroProductCollage .heroProduct{width:190px!important;height:260px!important}.heroCatalogArt .heroProductCollage .p1{left:0!important}.heroCatalogArt .heroProductCollage .p2{left:70px!important}.heroCatalogArt .heroProductCollage .p3{left:140px!important}.heroCatalogArt .heroProductCollage .p4{right:55px!important}.heroCatalogArt .heroProductCollage .p5{right:-10px!important}}
+@media(max-width:620px){.heroCatalogArt .heroProductCollage .heroProduct{width:150px!important;height:210px!important}.heroCatalogArt .heroProductCollage .p1{left:-15px!important}.heroCatalogArt .heroProductCollage .p2{left:35px!important}.heroCatalogArt .heroProductCollage .p3{left:85px!important}.heroCatalogArt .heroProductCollage .p4{right:30px!important}.heroCatalogArt .heroProductCollage .p5{right:-25px!important}}
