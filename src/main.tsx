@@ -11,7 +11,7 @@ import './asset-visibility-fix.css';
 import './hero-redesign.css';
 import './reference-redesign.css';
 import './manufacturing-quality-overrides.css';
-import './page-visual-repair.css';
+import './final-visual-polish.css';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
