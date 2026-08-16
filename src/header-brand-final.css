@@ -1,11 +1,13 @@
-/* Final Skyline header brand treatment — header only. */
-.header .nav{background:#fff}
-.header .brand{display:flex!important;align-items:center!important;gap:12px!important;min-width:260px!important;background:#fff!important;color:#111!important}
-.header .brand img{display:block!important;width:52px!important;height:52px!important;object-fit:contain!important;flex:0 0 52px!important}
-.header .brand span{display:flex!important;align-items:baseline!important;gap:0!important;white-space:nowrap!important;color:#111!important}
-.header .brand strong{display:inline!important;font-family:'Manrope',sans-serif!important;font-size:17px!important;font-weight:800!important;line-height:1!important;letter-spacing:.06em!important;color:#003b7a!important}
-.header .brand strong::after{content:''}
-.header .brand small{display:inline!important;margin-left:0!important;font-family:'Manrope',sans-serif!important;font-size:11px!important;font-weight:800!important;line-height:1!important;letter-spacing:.08em!important;color:#111!important}
-.header .brand small::before{content:' ';white-space:pre}
-@media(max-width:900px){.header .brand{min-width:0!important}.header .brand img{width:46px!important;height:46px!important;flex-basis:46px!important}.header .brand strong{font-size:14px!important}.header .brand small{font-size:9px!important}}
+/* Skyline header — preserve the existing navigation and apply only the requested brand treatment. */
+.header .nav{background:#fff!important}
+.header .brand{display:flex!important;align-items:center!important;gap:12px!important;min-width:260px!important;background:#fff!important;color:#111!important;flex:0 0 auto!important}
+.header .brand img{display:block!important;visibility:visible!important;opacity:1!important;width:52px!important;height:52px!important;object-fit:contain!important;flex:0 0 52px!important}
+.header .brand span{display:flex!important;align-items:baseline!important;gap:0!important;white-space:nowrap!important;color:#111!important;visibility:visible!important;opacity:1!important}
+.header .brand strong{display:inline!important;font-family:'Manrope',sans-serif!important;font-size:17px!important;font-weight:800!important;line-height:1!important;letter-spacing:.06em!important;color:#003b7a!important;visibility:visible!important;opacity:1!important}
+.header .brand small{display:inline!important;margin-left:0!important;font-family:'Manrope',sans-serif!important;font-size:11px!important;font-weight:800!important;line-height:1!important;letter-spacing:.08em!important;color:#111!important;visibility:visible!important;opacity:1!important}
+.header .desktopNav{display:flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;gap:20px!important;margin-left:auto!important;flex:0 1 auto!important}
+.header .desktopNav a{display:block!important;visibility:visible!important;opacity:1!important}
+.header .navQuote{display:inline-flex!important;visibility:visible!important;opacity:1!important;flex:0 0 auto!important}
+@media(max-width:1100px){.header .brand{min-width:220px!important}.header .desktopNav{gap:12px!important}.header .desktopNav a{font-size:9px!important}.header .navQuote{padding:11px 13px!important}}
+@media(max-width:900px){.header .brand{min-width:0!important}.header .brand img{width:46px!important;height:46px!important;flex-basis:46px!important}.header .brand strong{font-size:14px!important}.header .brand small{font-size:9px!important}.header .desktopNav,.header .navQuote{display:none!important}.header .menuBtn{display:block!important}}
 @media(max-width:560px){.header .brand{gap:8px!important}.header .brand img{width:42px!important;height:42px!important;flex-basis:42px!important}.header .brand strong{font-size:12px!important}.header .brand small{font-size:7px!important;letter-spacing:.05em!important}}
