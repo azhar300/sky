@@ -17,6 +17,7 @@ import './final-hero-oem-only.css';
 import './header-brand-final.css';
 import './header-colors-final.css';
 
+// Keep the final approved visual state deployable without changing application behavior.
 function ScrollToTop() {
   const { pathname, search } = useLocation();
 
