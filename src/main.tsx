@@ -8,6 +8,7 @@ import './catalog-pass.css';
 import './catalog-images.css';
 import './premium-overrides.css';
 import './final-catalog-fix.css';
+import './asset-visibility-fix.css';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
