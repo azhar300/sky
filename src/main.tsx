@@ -12,6 +12,7 @@ import './hero-redesign.css';
 import './reference-redesign.css';
 import './manufacturing-quality-overrides.css';
 import './final-visual-polish.css';
+import './banner-image-fix.css';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
