@@ -1,0 +1,35 @@
+:root{--sg-deep:#061a31;--sg-navy:#0a2a4a;--sg-blue:#1267a8;--sg-cyan:#35b8cf;--sg-paper:#f6f9fb}
+
+/* Premium editorial hero: white canvas + deep-navy architectural frame + layered real product photography. */
+.heroCatalog{min-height:760px!important;background:#f8fafb!important;overflow:hidden!important;position:relative!important}
+.heroCatalog:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,#fff 49%,#eef5f8 49%,#eef5f8 100%);z-index:0}
+.heroCatalog:after{content:"GLOBAL GLOVE MANUFACTURING / 2026";position:absolute;right:36px;top:30px;color:rgba(6,26,49,.22);font:800 8px var(--sg-display);letter-spacing:.22em;z-index:2}
+.heroCatalogGrid{min-height:700px!important;position:relative!important;z-index:3!important;grid-template-columns:46% 54%!important}
+.heroCatalogCopy{padding-top:105px!important}
+.heroCatalogCopy h1{font-size:clamp(50px,6.2vw,86px)!important;line-height:.86!important;letter-spacing:-.075em!important}
+.heroCatalogCopy h1 em{display:inline-block;color:var(--sg-blue)!important;position:relative}
+.heroCatalogCopy h1 em:after{content:"";position:absolute;left:0;right:12%;bottom:-7px;height:3px;background:var(--sg-cyan);transform:skewX(-25deg)}
+.heroCatalogCopy h1 strong{font-weight:900!important;color:var(--sg-deep)!important}
+.heroCatalogArt{height:700px!important;position:relative!important}
+.heroCatalogArt:before{width:690px!important;height:690px!important;right:-140px!important;top:4px!important;border-radius:52% 0 0 52%!important;background:linear-gradient(145deg,#0f4774 0%,#092c4d 45%,#041525 100%)!important;box-shadow:-35px 40px 100px rgba(6,26,49,.24)!important;z-index:0!important}
+.heroCatalogArt:after{width:560px!important;height:560px!important;right:25px!important;top:74px!important;border:1px solid rgba(94,215,231,.22)!important;box-shadow:0 0 0 42px rgba(53,184,207,.045),0 0 0 96px rgba(53,184,207,.02)!important;z-index:1!important}
+.heroCatalogArt .worldDisc{width:470px!important;height:470px!important;right:68px!important;top:116px!important;opacity:.38!important;background:radial-gradient(circle at 45% 38%,rgba(53,184,207,.35),transparent 58%),repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.07) 0 1px,transparent 1px 27px)!important;z-index:2!important}
+.heroProductCollage{z-index:8!important;transform:translateX(15px)!important}
+.heroProductCollage .heroProduct{width:220px!important;height:350px!important;filter:drop-shadow(0 30px 24px rgba(0,0,0,.38))!important;object-fit:contain!important}
+.heroProductCollage .p1{left:18px!important;bottom:74px!important;transform:rotate(-17deg) scale(.92)!important;z-index:2!important}
+.heroProductCollage .p2{left:112px!important;bottom:114px!important;transform:rotate(-5deg) scale(.96)!important;z-index:5!important}
+.heroProductCollage .p3{left:218px!important;bottom:55px!important;transform:rotate(2deg) scale(1.08)!important;z-index:7!important}
+.heroProductCollage .p4{right:62px!important;bottom:112px!important;transform:rotate(10deg) scale(.96)!important;z-index:6!important}
+.heroProductCollage .p5{right:-18px!important;bottom:72px!important;transform:rotate(18deg) scale(.9)!important;z-index:3!important}
+.heroProductCollage:before{content:"01";position:absolute;right:68px;top:46px;color:rgba(255,255,255,.48);font:900 10px var(--sg-display);letter-spacing:.22em}
+.heroProductCollage:after{content:"ENGINEERED FOR PERFORMANCE";position:absolute;right:50px;top:75px;padding:9px 12px;border-left:2px solid var(--sg-cyan);background:rgba(4,21,37,.42);backdrop-filter:blur(12px);color:#d7f7fa;font:800 7px var(--sg-display);letter-spacing:.2em}
+.heroTag{right:54px!important;bottom:30px!important;color:#7ee0ea!important;font-size:8px!important;letter-spacing:.24em!important}
+.catalogCurve{height:60px!important;background:var(--sg-deep)!important}
+.catalogCurve:before{background:linear-gradient(90deg,var(--sg-cyan),transparent)!important}
+
+/* Gallery is an image showcase, not an implementation note. */
+.galleryTitle p{font-size:0!important;max-width:420px!important}
+.galleryTitle p:after{content:"A curated view of the glove range, product presentation and brand direction.";font-size:14px;line-height:1.8;color:#657586}
+
+@media(max-width:900px){.heroCatalog:before{background:linear-gradient(180deg,#fff 0 48%,#eef5f8 48% 100%)}.heroCatalogGrid{grid-template-columns:1fr!important}.heroCatalogCopy{padding-top:75px!important}.heroCatalogArt{height:530px!important}.heroCatalogArt:before{width:92%!important;right:-25%!important}.heroProductCollage .heroProduct{width:175px!important;height:280px!important}.heroProductCollage .p1{left:0!important}.heroProductCollage .p2{left:55px!important}.heroProductCollage .p3{left:120px!important}.heroProductCollage .p4{right:45px!important}.heroProductCollage .p5{right:-18px!important}}
+@media(max-width:620px){.heroCatalogArt{height:430px!important}.heroProductCollage .heroProduct{width:145px!important;height:225px!important}.heroProductCollage .p1{left:-20px!important}.heroProductCollage .p2{left:25px!important}.heroProductCollage .p3{left:75px!important}.heroProductCollage .p4{right:28px!important}.heroProductCollage .p5{right:-28px!important}.heroProductCollage:after{right:18px;top:42px;font-size:6px}.heroCatalogCopy h1{font-size:48px!important}}
