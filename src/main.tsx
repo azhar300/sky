@@ -2,6 +2,7 @@ import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import App from './App';
+import WhatsAppFloat from './WhatsAppFloat';
 import './styles.css';
 import './catalog-pass.css';
 import './catalog-images.css';
@@ -31,6 +32,7 @@ createRoot(rootElement).render(
     <BrowserRouter>
       <ScrollToTop />
       <App />
+      <WhatsAppFloat />
     </BrowserRouter>
   </StrictMode>
 );
