@@ -1,0 +1,50 @@
+/* Manufacturing + Quality visual pass: catalogue-derived banners, real product references, and brand-correct logo treatment. */
+
+.brand img{width:142px;height:auto;max-height:58px;object-fit:contain;display:block}
+.brand>span{display:none}
+.footerLogo{width:154px;height:auto;filter:none;background:#fff;padding:7px 12px;border-radius:2px}
+
+.pageHero:has(+ .manufacturingPage),
+.pageHero:has(+ .qualityGrid){background:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.90) 46%,rgba(0,19,55,.35) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-MG-03.png') center/cover no-repeat;border:0;color:#fff;min-height:430px;display:flex;align-items:center}
+.pageHero:has(+ .qualityGrid){background-image:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.90) 46%,rgba(0,19,55,.30) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-01.png')}
+.pageHero:has(+ .manufacturingPage):after,.pageHero:has(+ .qualityGrid):after{right:7%;top:50%;transform:translateY(-50%);width:260px;height:260px;border:1px solid rgba(98,211,223,.34);box-shadow:0 0 0 32px rgba(98,211,223,.07),0 0 0 74px rgba(98,211,223,.035)}
+.pageHero:has(+ .manufacturingPage) .container,.pageHero:has(+ .qualityGrid) .container{padding:105px 0 98px}
+.pageHero:has(+ .manufacturingPage) .eyebrow,.pageHero:has(+ .qualityGrid) .eyebrow{color:#62d3df}
+.pageHero:has(+ .manufacturingPage) h1,.pageHero:has(+ .qualityGrid) h1{color:#fff;max-width:820px}
+.pageHero:has(+ .manufacturingPage) p,.pageHero:has(+ .qualityGrid) p{color:#c7d4e0;max-width:700px}
+
+.manufacturingPage{position:relative;background:#06172d;overflow:hidden;padding:90px 0 105px}
+.manufacturingPage:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,23,45,.96) 0%,rgba(6,23,45,.82) 45%,rgba(6,23,45,.48) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') right center/58% auto no-repeat;opacity:.95;pointer-events:none}
+.manufacturingPage .container{position:relative;z-index:2}
+.manufacturingGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border:0}
+.manufacturingGrid:before{content:"MANUFACTURING / PRODUCTION FLOW";grid-column:1/-1;color:#62d3df;font:800 10px var(--display);letter-spacing:.19em;padding-bottom:12px}
+.manufacturingGrid>article{min-height:300px;padding:30px 28px 26px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.13);background:rgba(3,17,35,.78);backdrop-filter:blur(8px);transition:transform .25s,border-color .25s,background .25s}
+.manufacturingGrid>article:after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:#1599b3;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.manufacturingGrid>article:hover{transform:translateY(-6px);border-color:rgba(98,211,223,.48);background:rgba(3,20,41,.92)}
+.manufacturingGrid>article:hover:after{transform:scaleX(1)}
+.manufacturingGrid>article:nth-child(2){background-image:linear-gradient(rgba(3,17,35,.84),rgba(3,17,35,.94)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png');background-position:center;background-size:cover}
+.manufacturingGrid>article:nth-child(3){background-image:linear-gradient(rgba(3,17,35,.84),rgba(3,17,35,.94)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-FG-03.png');background-position:center;background-size:cover}
+.manufacturingGrid>article:nth-child(4){background-image:linear-gradient(rgba(3,17,35,.84),rgba(3,17,35,.94)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-CG-05.png');background-position:center;background-size:cover}
+.manufacturingGrid>article:nth-child(5){background-image:linear-gradient(rgba(3,17,35,.84),rgba(3,17,35,.94)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-MG-03.png');background-position:center;background-size:cover}
+.manufacturingGrid>article:nth-child(6){background-image:linear-gradient(rgba(3,17,35,.84),rgba(3,17,35,.94)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-RAG-07.png');background-position:center;background-size:cover}
+.manufacturingGrid>article:nth-child(7){background-image:linear-gradient(rgba(3,17,35,.84),rgba(3,17,35,.94)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png');background-position:center;background-size:cover}
+.manufacturingGrid>article b{color:#62d3df;font:800 10px ui-monospace}
+.manufacturingGrid>article h3{color:#fff;font:800 24px var(--display);letter-spacing:-.04em;margin:50px 0 10px}
+.manufacturingGrid>article p{color:#b9c9d8;font-size:12px;line-height:1.75;margin:0}
+
+.qualityGrid{position:relative;background:#f4f8fa;padding:95px 0 105px;overflow:hidden}
+.qualityGrid:before{content:"";position:absolute;right:0;top:0;bottom:0;width:48%;background:linear-gradient(90deg,#f4f8fa 0%,rgba(244,248,250,.66) 24%,rgba(244,248,250,.08) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-01.png') center/cover no-repeat;pointer-events:none}
+.qualityGrid .container{position:relative;z-index:2}
+.qualityInner{display:grid;grid-template-columns:.92fr 1.08fr;gap:70px;align-items:center}
+.qualityInner>div:first-child{padding:35px 0}
+.qualityInner>div:first-child:before{content:"QUALITY / COMMITMENT";display:block;color:var(--cyan);font:800 10px var(--display);letter-spacing:.19em;margin-bottom:18px}
+.qualityInner h2{font-size:clamp(38px,4.7vw,64px)}
+.qualityInner p{max-width:560px;color:#657488;font-size:15px;line-height:1.8}
+.qualityPoints{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,19,55,.12);background:rgba(255,255,255,.90);backdrop-filter:blur(12px);box-shadow:0 24px 60px rgba(0,19,55,.12)}
+.qualityPoints div{min-height:155px;padding:24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:22px 1fr;gap:12px;align-content:start;transition:.25s}
+.qualityPoints div:nth-child(even){border-right:0}.qualityPoints div:nth-last-child(-n+2){border-bottom:0}.qualityPoints div:hover{background:#fff;transform:translateY(-2px)}
+.qualityPoints svg{color:var(--cyan);margin-top:2px}.qualityPoints span{font:800 12px var(--display);color:var(--navy)}.qualityPoints b{grid-column:2;color:#9aa8b5;font:800 9px ui-monospace}
+.qualityGrid:after{content:"SLGI-GG-01     SLGI-CG-05     SLGI-TG-06";position:absolute;left:max(24px,calc((100vw - 1220px)/2));bottom:28px;color:rgba(0,19,55,.35);font:800 8px ui-monospace;letter-spacing:.16em;z-index:1}
+
+@media(max-width:900px){.pageHero:has(+ .manufacturingPage),.pageHero:has(+ .qualityGrid){min-height:360px}.pageHero:has(+ .manufacturingPage):after,.pageHero:has(+ .qualityGrid):after{right:-40px;opacity:.6}.manufacturingPage:before{background:linear-gradient(90deg,rgba(6,23,45,.97),rgba(6,23,45,.75)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') center/cover no-repeat}.manufacturingGrid{grid-template-columns:1fr 1fr}.qualityGrid:before{width:100%;opacity:.16}.qualityInner{grid-template-columns:1fr;gap:30px}}
+@media(max-width:560px){.brand img{width:125px}.manufacturingGrid{grid-template-columns:1fr}.manufacturingGrid>article{min-height:240px}.qualityPoints{grid-template-columns:1fr}.qualityPoints div,.qualityPoints div:nth-child(even){border-right:0}.qualityPoints div:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.qualityPoints div:last-child{border-bottom:0}.qualityGrid:after{font-size:7px;left:15px;bottom:18px}}
