@@ -12,23 +12,16 @@ import './hero-redesign.css';
 import './reference-redesign.css';
 import './manufacturing-quality-overrides.css';
 import './final-visual-polish.css';
-import './banner-image-fix.css';
+import './banner-fix.css';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [pathname, search]);
-
+  useEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); }, [pathname, search]);
   return null;
 }
 
 const rootElement = document.getElementById('root');
-
-if (!rootElement) {
-  throw new Error('Skyline application root element was not found.');
-}
+if (!rootElement) throw new Error('Skyline application root element was not found.');
 
 createRoot(rootElement).render(
   <StrictMode>
