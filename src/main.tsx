@@ -10,6 +10,7 @@ import './final-catalog-fix.css';
 import './asset-visibility-fix.css';
 import './hero-redesign.css';
 import './reference-redesign.css';
+import './manufacturing-quality-overrides.css';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
