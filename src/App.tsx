@@ -2,9 +2,11 @@ import { useMemo, useState, useEffect } from 'react';
 import { Link, NavLink, Route, Routes, useParams, useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowDownRight, ArrowRight, Bike, Box, CircleCheck, Factory, Globe2, Hammer, Mail, Menu, MessageCircle, ShieldCheck, Sparkles, Truck, X } from 'lucide-react';
+import './footer-socials.css';
 
 const contact = { phone: '+92 342 7189884', email: 'skylineglobalindustries@gmail.com', location: 'Sialkot, Punjab, Pakistan' };
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xoeankkr';
+const whatsappUrl = 'https://wa.me/923427189884?text=Hello%20Skyline%20Global%20Industries%2C%20I%27d%20like%20to%20discuss%20a%20glove%20sourcing%20requirement.';
 
 const cloudinary = (code: string) => {
   const extension = code === 'SLGI-RAG-06' || code === 'SLGI-CG-08' ? 'jpg' : 'png';
@@ -51,7 +53,17 @@ function SiteShell({ children }: { children: React.ReactNode }) {
   </div>{open && <motion.nav className="mobileNav" initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}}>{nav.map(([href,label]) => <Link key={href} to={href} onClick={() => setOpen(false)}>{label}</Link>)}<Link className="quoteBtn" to="/contact" onClick={() => setOpen(false)}>Request a Quote <ArrowRight size={15}/></Link></motion.nav>}</header><main>{children}</main><Footer/></div>;
 }
 
-function Footer(){ return <footer className="footer"><div className="container footerGrid"><div><img className="footerLogo" src="/images/logo.svg" alt="Skyline Global Industries"/><p>Manufacturers and exporters of premium quality gloves from Sialkot, Pakistan.</p></div><div><span>EXPLORE</span><Link to="/products">Product Catalogue</Link><Link to="/oem-private-label">OEM / Private Label</Link><Link to="/manufacturing">Manufacturing</Link><Link to="/quality">Quality</Link></div><div><span>COMPANY</span><Link to="/about">About Skyline</Link><Link to="/credentials">Company Credentials</Link><Link to="/gallery">Gallery</Link><Link to="/contact">Contact</Link></div><div><span>CONTACT</span><a href={`tel:${contact.phone}`}>{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a><small>{contact.location}</small></div></div><div className="container footerBottom"><span>© 2026 Skyline Global Industries</span><span>Sialkot · Pakistan</span></div></footer> }
+function InstagramIcon(){return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>}
+function FacebookIcon(){return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-3.1 0-5 1.9-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1Z"/></svg>}
+function TikTokIcon(){return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 3c.3 1.9 1.4 3.2 3.5 3.5v3.1c-1.5-.1-2.7-.6-3.7-1.4v6.3c0 4-2.6 6.5-6.2 6.5A5.9 5.9 0 1 1 9 9.2v3.3a2.8 2.8 0 1 0 2.9 2.7V3h3.6Z"/></svg>}
+
+function Footer(){ return <footer className="footer"><div className="container footerGrid"><div><img className="footerLogo" src="/images/logo.svg" alt="Skyline Global Industries"/><p>Manufacturers and exporters of premium quality gloves from Sialkot, Pakistan.</p><div className="footerSocialsLabel">CONNECT WITH SKYLINE</div><div className="footerSocials">
+  <a className="footerSocialLink instagram" href="https://www.instagram.com/skylineglobalindustries?igsh=MWkwNDlycHdtdXVleg==" target="_blank" rel="noopener noreferrer" aria-label="Skyline Global Industries on Instagram"><InstagramIcon/></a>
+  <a className="footerSocialLink facebook" href="https://www.facebook.com/share/1JWWj4JrJC/" target="_blank" rel="noopener noreferrer" aria-label="Skyline Global Industries on Facebook"><FacebookIcon/></a>
+  <a className="footerSocialLink tiktok" href="https://www.tiktok.com/@skylineglobalindustries" target="_blank" rel="noopener noreferrer" aria-label="Skyline Global Industries on TikTok"><TikTokIcon/></a>
+  <a className="footerSocialLink whatsapp" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Contact Skyline Global Industries on WhatsApp"><MessageCircle/></a>
+  <a className="footerSocialLink gmail" href={`mailto:${contact.email}`} aria-label="Email Skyline Global Industries"><Mail/></a>
+</div></div><div><span>EXPLORE</span><Link to="/products">Product Catalogue</Link><Link to="/oem-private-label">OEM / Private Label</Link><Link to="/manufacturing">Manufacturing</Link><Link to="/quality">Quality</Link></div><div><span>COMPANY</span><Link to="/about">About Skyline</Link><Link to="/credentials">Company Credentials</Link><Link to="/gallery">Gallery</Link><Link to="/contact">Contact</Link></div><div><span>CONTACT</span><a href={`tel:${contact.phone}`}>{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a><small>{contact.location}</small></div></div><div className="container footerBottom"><span>© 2026 Skyline Global Industries</span><span>Sialkot · Pakistan</span></div></footer> }
 
 function Home(){ const reduce=useReducedMotion(); return <>
   <section className="heroCatalog"><div className="heroBlob one"/><div className="heroBlob two"/><div className="container heroCatalogGrid">
