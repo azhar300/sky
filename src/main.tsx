@@ -1,11 +1,13 @@
 import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useLocation } from 'react-router-dom';
+import './catalog-runtime-fix';
 import App from './App';
 import './styles.css';
 import './catalog-pass.css';
 import './catalog-images.css';
 import './premium-overrides.css';
+import './final-catalog-fix.css';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
