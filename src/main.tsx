@@ -6,11 +6,14 @@ import './styles.css';
 import './catalog-pass.css';
 import './catalog-images.css';
 import './premium-overrides.css';
-import './final-catalog-fix.css';
 import './asset-visibility-fix.css';
 import './hero-redesign.css';
 import './reference-redesign.css';
 import './manufacturing-quality-overrides.css';
+
+/* Final requested visual layers — deliberately loaded last. */
+import './final-catalog-fix.css';
+import './final-hero-oem-only.css';
 import './header-brand-final.css';
 import './header-colors-final.css';
 
