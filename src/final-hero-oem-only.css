@@ -1,0 +1,28 @@
+/* FINAL SKYLINE HERO + OEM-ONLY OVERRIDES */
+.heroCatalog{min-height:620px!important;background:#fff!important;color:#fff!important}
+.heroCatalog:before{background:linear-gradient(90deg,#061a31 0%,#061a31 44%,#eaf2f6 44%,#eaf2f6 100%)!important}
+.heroCatalogGrid{min-height:560px!important;grid-template-columns:44% 56%!important;gap:0!important}
+.heroCatalogCopy{padding:92px 0 70px!important;max-width:640px}
+.heroCatalogCopy h1{font-size:clamp(46px,5.4vw,78px)!important;line-height:.9!important;color:#fff!important}
+.heroCatalogCopy h1 em{color:#5fd0df!important}.heroCatalogCopy h1 strong{color:#fff!important}
+.heroCatalogArt{height:560px!important;position:relative!important;background:linear-gradient(135deg,#eaf2f6,#dce9ef)!important;overflow:hidden!important}
+.heroCatalogArt:before{width:620px!important;height:620px!important;right:-180px!important;top:-80px!important;border-radius:50%!important;background:linear-gradient(145deg,#0d4b78,#082c4b 65%,#061a31)!important;box-shadow:none!important}
+.heroCatalogArt:after{width:440px!important;height:440px!important;right:20px!important;top:65px!important;border-radius:50%!important;border:1px solid rgba(53,184,207,.3)!important;box-shadow:0 0 0 34px rgba(53,184,207,.05),0 0 0 76px rgba(53,184,207,.03)!important}
+.heroCatalogArt .worldDisc{width:360px!important;height:360px!important;right:60px!important;top:105px!important}
+.heroCatalogArt .heroProductCollage{position:absolute!important;inset:0!important}
+.heroCatalogArt .heroProduct{width:205px!important;height:290px!important;object-fit:contain!important;filter:drop-shadow(0 22px 18px rgba(0,0,0,.25))!important}
+.heroCatalogArt .p1{left:18px!important;bottom:50px!important;transform:rotate(-12deg)!important}.heroCatalogArt .p2{left:110px!important;bottom:78px!important;transform:rotate(-4deg)!important}.heroCatalogArt .p3{left:215px!important;bottom:35px!important;transform:rotate(2deg) scale(1.08)!important}.heroCatalogArt .p4{right:70px!important;bottom:70px!important;transform:rotate(9deg)!important}.heroCatalogArt .p5{right:-8px!important;bottom:46px!important;transform:rotate(15deg)!important}
+.heroProductCollage:before{right:46px!important;top:34px!important}.heroProductCollage:after{right:28px!important;top:61px!important}
+.catalogCurve{height:56px!important;background:#061a31!important}
+.site:has(.oemPage) .pageHero{min-height:560px!important;background:#061a31!important;position:relative!important;overflow:hidden!important;display:block!important}
+.site:has(.oemPage) .pageHero:before{content:""!important;position:absolute!important;left:44%!important;right:0!important;top:0!important;bottom:0!important;background:linear-gradient(90deg,rgba(6,26,49,.05),rgba(6,26,49,.12)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png') center/cover no-repeat!important;z-index:1!important}
+.site:has(.oemPage) .pageHero:after{content:""!important;position:absolute!important;left:55%!important;top:70px!important;width:420px!important;height:420px!important;border:1px solid rgba(53,184,207,.25)!important;border-radius:50%!important;box-shadow:0 0 0 38px rgba(53,184,207,.04),0 0 0 82px rgba(53,184,207,.025)!important;z-index:2!important}
+.site:has(.oemPage) .pageHero .container{min-height:560px!important;padding:90px 0!important;display:flex!important;justify-content:center!important;position:relative!important;z-index:4!important}
+.site:has(.oemPage) .pageHero h1{max-width:650px!important;font-size:clamp(46px,5.6vw,78px)!important;color:#fff!important}.site:has(.oemPage) .pageHero p{max-width:560px!important;color:#cad7e2!important}
+.site:has(.oemPage) .oemPage{background:#f6f9fb!important;padding:100px 0!important}
+.site:has(.oemPage) .oemPageGrid{grid-template-columns:1.05fr .95fr!important;align-items:center!important}
+.site:has(.oemPage) .oemChecklist{border:1px solid #dce5eb!important;background:#fff!important}
+.site:has(.oemPage) .oemChecklist>div{min-height:94px!important;padding:22px 24px!important;border-bottom:1px solid #e6edf1!important}
+.site:has(.oemPage) .oemChecklist>div:last-child{border-bottom:0!important}
+.site:has(.oemPage) .oemPage:before{content:"OEM / PRIVATE LABEL · FROM CONCEPT TO PRODUCTION";display:block;max-width:1200px;margin:0 auto 28px;padding:0 24px;color:#5d7183;font:800 9px var(--display);letter-spacing:.2em}
+@media(max-width:900px){.heroCatalog:before{background:linear-gradient(180deg,#061a31 0 48%,#eaf2f6 48% 100%)!important}.heroCatalogGrid{grid-template-columns:1fr!important}.heroCatalogCopy{padding:70px 0 40px!important}.heroCatalogArt{height:500px!important}.heroCatalogArt:before{width:600px!important;height:600px!important;right:-250px!important}.heroCatalogArt .heroProduct{width:175px!important;height:250px!important}.heroCatalogArt .p1{left:-5px!important}.heroCatalogArt .p2{left:70px!important}.heroCatalogArt .p3{left:145px!important}.heroCatalogArt .p4{right:40px!important}.heroCatalogArt .p5{right:-35px!important}.site:has(.oemPage) .pageHero:before{left:0!important;top:48%!important;background:linear-gradient(0deg,rgba(6,26,49,.15),rgba(6,26,49,.15)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png') center/cover no-repeat!important}.site:has(.oemPage) .pageHero .container{min-height:560px!important;padding:62px 24px 300px!important}.site:has(.oemPage) .pageHero h1{font-size:46px!important}.site:has(.oemPage) .pageHero p{font-size:15px!important}.site:has(.oemPage) .oemPage{padding:70px 0!important}.site:has(.oemPage) .oemPageGrid{grid-template-columns:1fr!important}}
