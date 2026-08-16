@@ -14,7 +14,7 @@
 .pageHero h1{color:#fff;max-width:850px;margin:18px 0 18px;text-shadow:0 4px 25px rgba(0,0,0,.2)}
 .pageHero p{color:#d1dce7;max-width:650px}
 
-/* Page-specific photography. These selectors are intentionally based on the next page section, so they do not require route-specific React markup. */
+/* Page-specific photography */
 .pageHero:has(+ .oemPage):before{background-image:url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-01.png')}
 .pageHero:has(+ .manufacturingPage):before{background-image:url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png')}
 .pageHero:has(+ .qualityGrid):before{background-image:url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png')}
@@ -35,7 +35,8 @@
 .oemChecklist svg{color:#62d3df}
 
 /* ---------- OEM home banner image ---------- */
-.oemRealVisual{min-height:360px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(105,212,229,.18);background:radial-gradient(circle at 50% 42%,rgba(14,146,181,.18),transparent 48%),rgba(0,0,0,.12)}
+.oemRealVisual{min-height:360px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(105,212,229,.18);background-image:linear-gradient(90deg,rgba(0,19,55,.16),rgba(0,19,55,.38)),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821726/SLGI-TG-01.png');background-size:cover,cover;background-position:center,center;background-repeat:no-repeat,repeat}
+.oemRealVisual:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 58% 46%,rgba(105,212,229,.15),transparent 42%),linear-gradient(90deg,rgba(0,19,55,.1),rgba(0,19,55,.34));pointer-events:none;z-index:1}
 .oemProductPhoto{width:min(82%,430px);height:320px;object-fit:contain;display:block;position:relative;z-index:2;filter:drop-shadow(0 24px 35px rgba(0,0,0,.34));transform:rotate(-4deg);transition:transform .35s ease}
 .oemRealVisual:hover .oemProductPhoto{transform:rotate(-2deg) scale(1.025)}
 .oemPackageMock{position:absolute;right:6%;bottom:8%;z-index:3;width:145px;min-height:185px;padding:20px 14px;background:linear-gradient(145deg,#0a2a4c,#001337);border:1px solid rgba(105,212,229,.35);box-shadow:0 20px 40px rgba(0,0,0,.38);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:800 15px/1.05 var(--display);letter-spacing:.08em;text-align:center;transform:rotate(4deg)}
