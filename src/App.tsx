@@ -7,6 +7,7 @@ import './footer-socials.css';
 const contact = { phone: '+92 342 7189884', email: 'skylineglobalindustries@gmail.com', location: 'Sialkot, Punjab, Pakistan' };
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xoeankkr';
 const whatsappUrl = 'https://wa.me/923427189884?text=Hello%20Skyline%20Global%20Industries%2C%20I%27d%20like%20to%20discuss%20a%20glove%20sourcing%20requirement.';
+const exactHeaderLogo = 'https://res.cloudinary.com/m2w7btvw/image/upload/v1786908840/skyline/skyline/header-exact-logo.webp';
 
 const cloudinary = (code: string) => {
   const extension = code === 'SLGI-RAG-06' || code === 'SLGI-CG-08' ? 'jpg' : 'png';
@@ -46,7 +47,7 @@ export default function App() {
 function SiteShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return <div className="site"><header className="header"><div className="container nav">
-    <Link className="brand" to="/" onClick={() => setOpen(false)}><img src="/images/logo.svg" alt="Skyline Global Industries" /><span><strong>SKYLINE</strong><small>GLOBAL INDUSTRIES</small></span></Link>
+    <Link className="brand" to="/" onClick={() => setOpen(false)}><img src={exactHeaderLogo} alt="Skyline Global Industries" /></Link>
     <nav className="desktopNav">{nav.map(([href, label]) => <NavLink key={href} to={href}>{label}</NavLink>)}</nav>
     <Link className="quoteBtn navQuote" to="/contact">Request a Quote <ArrowRight size={15}/></Link>
     <button className="menuBtn" onClick={() => setOpen(v => !v)} aria-label="Menu">{open ? <X/> : <Menu/>}</button>
