@@ -2,7 +2,7 @@
 
 body:has(.oemPage) .pageHero::before {
   background-image: url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png') !important;
-  background-position: center right !important;
+  background-position: right center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   opacity: 1 !important;
@@ -10,24 +10,29 @@ body:has(.oemPage) .pageHero::before {
 
 body:has(.manufacturingPage) .pageHero::before {
   background-image: url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') !important;
-  background-position: center right !important;
-  background-size: cover !important;
+  background-position: right center !important;
+  background-size: auto 100% !important;
   background-repeat: no-repeat !important;
   opacity: 1 !important;
 }
 
 body:has(.qualityGrid) .pageHero::before {
   background-image: url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') !important;
-  background-position: center right !important;
-  background-size: cover !important;
+  background-position: right center !important;
+  background-size: auto 100% !important;
   background-repeat: no-repeat !important;
   opacity: 1 !important;
 }
 
 @media (max-width: 900px) {
-  body:has(.oemPage) .pageHero::before,
+  body:has(.oemPage) .pageHero::before {
+    background-position: center !important;
+    background-size: cover !important;
+  }
+
   body:has(.manufacturingPage) .pageHero::before,
   body:has(.qualityGrid) .pageHero::before {
     background-position: center !important;
+    background-size: cover !important;
   }
 }
