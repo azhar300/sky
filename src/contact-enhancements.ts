@@ -29,9 +29,11 @@ function addContactStyles() {
     .contactPage .contactForm input:focus,.contactPage .contactForm textarea:focus{border-color:#1599b3!important;box-shadow:0 0 0 3px rgba(21,153,179,.1)!important}
     .contactPage .contactForm button{justify-self:start!important;margin-top:4px!important}
     .contactPage .skylineContactExtra{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:#526274}
-    .skylineProductQuote{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;margin:0 14px 16px!important;padding:11px 15px!important;border:1px solid var(--cyan,#1599b3)!important;border-radius:4px!important;background:var(--cyan,#1599b3)!important;color:#fff!important;font:800 10px var(--display)!important;letter-spacing:.02em!important;text-transform:none!important;line-height:1!important;cursor:pointer!important;appearance:none!important}
-    .skylineProductQuote:hover{transform:translateY(-2px)!important;background:#0a8199!important;box-shadow:0 10px 22px rgba(21,153,179,.18)!important}
-    .skylineGalleryLink{position:absolute!important;right:14px!important;bottom:14px!important;z-index:8!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 12px!important;border:1px solid rgba(255,255,255,.38)!important;border-radius:4px!important;background:rgba(0,19,55,.8)!important;color:#fff!important;font:800 9px var(--display)!important;letter-spacing:.04em!important;text-transform:uppercase!important;cursor:pointer!important;backdrop-filter:blur(8px)!important}
+    .productCard{position:relative!important}
+    .skylineProductQuote{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;margin:14px!important;padding:11px 15px!important;border:1px solid #35b8cf!important;border-radius:4px!important;background:#35b8cf!important;color:#fff!important;font:800 10px var(--display)!important;letter-spacing:.02em!important;text-transform:none!important;line-height:1!important;cursor:pointer!important;transition:transform .2s,box-shadow .2s,background .2s!important}
+    .skylineProductQuote:hover{transform:translateY(-2px)!important;background:#1eaec5!important;box-shadow:0 10px 22px rgba(53,184,207,.25)!important}
+    .productInfo .skylineProductQuote{display:inline-flex!important;width:auto!important}
+    .skylineGalleryLink{position:absolute!important;right:14px!important;bottom:14px!important;z-index:8!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 12px!important;border:1px solid rgba(255,255,255,.38)!important;border-radius:4px!important;background:rgba(0,19,55,.8)!important;color:#fff!important;font:800 9px var(--display)!important;letter-spacing:.04em!important;text-transform:uppercase!important;cursor:pointer!important;backdrop-filter:blur(8px)!important;pointer-events:auto!important}
     .galleryArt{position:relative!important}
     .skylineGalleryLink:hover{background:#1599b3!important;border-color:#1599b3!important}
     @media(max-width:800px){.contactPage .contactGrid{grid-template-columns:1fr!important;gap:40px!important}.contactPage .contactForm{grid-template-columns:1fr!important}.contactPage .contactForm label:nth-last-of-type(1),.contactPage .contactForm button{grid-column:auto!important}.contactPage .contactForm button{width:100%!important}.skylineProductQuote{width:calc(100% - 28px)!important;margin:12px 14px 16px!important}.skylineGalleryLink{right:10px!important;bottom:10px!important}}
@@ -51,8 +53,7 @@ function addProductQuoteButtons() {
     button.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      const params = new URLSearchParams({ product, sku, category });
-      window.location.assign(`/contact?${params.toString()}`);
+      window.location.assign(`/contact?product=${encodeURIComponent(product)}&sku=${encodeURIComponent(sku)}&category=${encodeURIComponent(category)}`);
     });
     card.appendChild(button);
   });
@@ -76,6 +77,11 @@ function addGalleryLinks() {
     link.className = 'skylineGalleryLink';
     link.href = `/products/${category}/${slug}`;
     link.textContent = 'View Product';
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.assign(link.href);
+    });
     card.appendChild(link);
   });
 }
