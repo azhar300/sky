@@ -1,4 +1,4 @@
-/* Page-specific banner photography. Uses existing Cloudinary glove assets in a wide banner crop. */
+/* Page-specific banner photography. */
 body:has(.manufacturingPage) .pageHero {
   background-image: linear-gradient(90deg, rgba(0,19,55,.82), rgba(0,19,55,.28)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/SLGI-TG-06.png') !important;
   background-size: cover !important;
@@ -13,8 +13,9 @@ body:has(.qualityGrid) .pageHero {
   background-repeat: no-repeat !important;
   min-height: 420px !important;
 }
+/* OEM page has .oemPage and .oemChecklist below the shared PageHero. */
 body:has(.oemPage) .pageHero,
-.pageHero:has(+ .oemPage) {
+body:has(.oemChecklist) .pageHero {
   background-image: linear-gradient(90deg, rgba(0,19,55,.82), rgba(0,19,55,.28)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/SLGI-MG-05.png') !important;
   background-size: cover !important;
   background-position: center center !important;
@@ -25,7 +26,7 @@ body:has(.oemPage) .pageHero,
   body:has(.manufacturingPage) .pageHero,
   body:has(.qualityGrid) .pageHero,
   body:has(.oemPage) .pageHero,
-  .pageHero:has(+ .oemPage) {
+  body:has(.oemChecklist) .pageHero {
     min-height: 360px !important;
     background-position: center center !important;
   }
