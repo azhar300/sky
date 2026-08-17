@@ -28,7 +28,7 @@
       .galleryRedesigned .galleryProductCard img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.22,1,.36,1), filter .5s ease; }
       .galleryRedesigned .galleryProductCard:hover img { transform:scale(1.055); }
       .galleryCardShade { position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(0,19,55,.04) 25%,rgba(0,19,55,.12) 48%,rgba(0,19,55,.9) 100%); pointer-events:none; }
-      .galleryCardInfo { position:absolute; z-index:2; left:26px; right:26px; bottom:24px; display:flex; align-items:flex-end; justify-content:space-between; gap:18px; color:#fff; }
+      .galleryCardInfo { position:absolute; z-index:2; left:26px; right:26px; bottom:24px; display:flex; align-items:flex-end; justify-content:space-between; gap:18px; color:#fff; pointer-events:none; }
       .galleryCardInfo > div { display:flex; flex-direction:column; gap:5px; }
       .galleryCategory { font-size:10px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; opacity:.76; }
       .galleryCardInfo strong { font-size:22px; line-height:1.1; letter-spacing:-.02em; }
@@ -36,12 +36,26 @@
       .galleryView { flex:none; border:1px solid rgba(255,255,255,.32); border-radius:999px; padding:11px 14px; font-size:10px; font-weight:800; letter-spacing:.12em; white-space:nowrap; background:rgba(255,255,255,.1); backdrop-filter:blur(12px); }
       .galleryView span { margin-left:7px; font-size:14px; }
       .galleryRedesigned .galleryProductCard > span:not(.galleryView) { position:absolute; z-index:3; top:22px; left:24px; color:#fff; font-size:11px; font-weight:800; letter-spacing:.14em; opacity:.85; }
-      .galleryProductAnchor { position:absolute; inset:0; z-index:4; display:block; color:inherit; text-decoration:none; border-radius:inherit; }
+      .galleryProductAnchor { position:absolute; inset:0; z-index:4; display:block; color:inherit; text-decoration:none; border-radius:inherit; cursor:pointer; }
       .galleryProductAnchor:focus-visible { outline:3px solid #fff; outline-offset:-6px; }
       @media (max-width:900px) { .galleryRedesigned .galleryTitle { grid-template-columns:1fr; gap:14px; } .galleryRedesigned .galleryProductCard, .galleryRedesigned .galleryProductCard:nth-child(1), .galleryRedesigned .galleryProductCard:nth-child(6) { grid-column:span 6; min-height:420px; } }
       @media (max-width:600px) { .galleryRedesigned .galleryGrid { grid-template-columns:1fr; } .galleryRedesigned .galleryProductCard, .galleryRedesigned .galleryProductCard:nth-child(1), .galleryRedesigned .galleryProductCard:nth-child(6) { grid-column:span 1; min-height:430px; } .galleryCardInfo { left:20px; right:20px; bottom:20px; } .galleryCardInfo strong { font-size:19px; } .galleryView { padding:9px 11px; } }
     `;
     document.head.appendChild(style);
+  };
+
+  const wireAnchor = (anchor) => {
+    if (anchor.dataset.spaWired === 'true') return;
+    anchor.dataset.spaWired = 'true';
+    anchor.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const href = anchor.getAttribute('href');
+      if (!href || !href.startsWith('/')) return;
+      event.preventDefault();
+      window.history.pushState({}, '', href);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
   };
 
   const enhance = () => {
@@ -84,6 +98,7 @@
         </div>
         <a class="galleryProductAnchor" href="${productPath(code)}" aria-label="Open ${meta[1]} ${meta[2]}"></a>
       `);
+      wireAnchor(card.querySelector('.galleryProductAnchor'));
     });
   };
 
