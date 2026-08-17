@@ -2,11 +2,16 @@
 
 .brand img{width:142px;height:auto;max-height:58px;object-fit:contain;display:block}
 .brand>span{display:none}
-.footerLogo{width:154px;height:auto;filter:none;background:#fff;padding:7px 12px;border-radius:2px}
+.footerLogo{width:154px;height:auto;filter:none!important;opacity:1!important;visibility:visible!important;display:block!important;background:#fff!important;padding:7px 12px;border-radius:2px}
 
 .pageHero:has(+ .manufacturingPage),
-.pageHero:has(+ .qualityGrid){background:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.90) 46%,rgba(0,19,55,.35) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-MG-03.png') center/cover no-repeat;border:0;color:#fff;min-height:430px;display:flex;align-items:center}
-.pageHero:has(+ .qualityGrid){background-image:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.90) 46%,rgba(0,19,55,.30) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-01.png')}
+.pageHero:has(+ .qualityGrid){background:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.90) 46%,rgba(0,19,55,.35) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821730/SLGI-TG-06.png') center/cover no-repeat;border:0;color:#fff;min-height:430px;display:flex;align-items:center}
+.pageHero:has(+ .qualityGrid){background-image:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.90) 46%,rgba(0,19,55,.30) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821974/SLGI-GG-05.png')}
+
+/* Route-aware fallback: NavLink marks the current page active, so the banner images work even when the page section is wrapped. */
+body:has(.desktopNav a[href="/manufacturing"].active) .pageHero{background:linear-gradient(90deg,rgba(0,19,55,.98) 0%,rgba(0,19,55,.88) 46%,rgba(0,19,55,.28) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821730/SLGI-TG-06.png') center/cover no-repeat!important}
+body:has(.desktopNav a[href="/quality"].active) .pageHero{background:linear-gradient(90deg,rgba(255,255,255,.78),rgba(255,255,255,.18)),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821974/SLGI-GG-05.png') center/cover no-repeat!important}
+
 .pageHero:has(+ .manufacturingPage):after,.pageHero:has(+ .qualityGrid):after{right:7%;top:50%;transform:translateY(-50%);width:260px;height:260px;border:1px solid rgba(98,211,223,.34);box-shadow:0 0 0 32px rgba(98,211,223,.07),0 0 0 74px rgba(98,211,223,.035)}
 .pageHero:has(+ .manufacturingPage) .container,.pageHero:has(+ .qualityGrid) .container{padding:105px 0 98px}
 .pageHero:has(+ .manufacturingPage) .eyebrow,.pageHero:has(+ .qualityGrid) .eyebrow{color:#62d3df}
