@@ -2,6 +2,7 @@ import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import App from './App';
+import WhatsAppFloat from './WhatsAppFloat';
 import './styles.css';
 import './catalog-pass.css';
 import './catalog-images.css';
@@ -15,6 +16,7 @@ import './final-visual-polish.css';
 import './banner-fix.css';
 import './contact-enhancements';
 import './legal-links';
+import './gallery-fix';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -25,6 +27,10 @@ function ScrollToTop() {
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Skyline application root element was not found.');
 
+const whatsappRoot = document.createElement('div');
+whatsappRoot.id = 'whatsapp-float-root';
+document.body.appendChild(whatsappRoot);
+
 createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter>
@@ -33,3 +39,5 @@ createRoot(rootElement).render(
     </BrowserRouter>
   </StrictMode>
 );
+
+createRoot(whatsappRoot).render(<WhatsAppFloat />);
