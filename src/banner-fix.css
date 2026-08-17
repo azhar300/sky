@@ -13,7 +13,8 @@ body:has(.qualityGrid) .pageHero {
   background-repeat: no-repeat !important;
   min-height: 420px !important;
 }
-body:has(.oemPage) .pageHero {
+body:has(.oemPage) .pageHero,
+.pageHero:has(+ .oemPage) {
   background-image: linear-gradient(90deg, rgba(0,19,55,.82), rgba(0,19,55,.28)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/SLGI-MG-05.png') !important;
   background-size: cover !important;
   background-position: center center !important;
@@ -23,7 +24,8 @@ body:has(.oemPage) .pageHero {
 @media (max-width:700px) {
   body:has(.manufacturingPage) .pageHero,
   body:has(.qualityGrid) .pageHero,
-  body:has(.oemPage) .pageHero {
+  body:has(.oemPage) .pageHero,
+  .pageHero:has(+ .oemPage) {
     min-height: 360px !important;
     background-position: center center !important;
   }
