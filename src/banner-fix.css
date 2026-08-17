@@ -1,7 +1,6 @@
 /* Skyline — Manufacturing + Quality banner redesign ONLY.
    OEM, footer structure, products, routing and all other pages remain untouched. */
 
-/* Shared banner canvas */
 body:has(.manufacturingPage) .pageHero,
 body:has(.qualityGrid) .pageHero {
   position: relative !important;
@@ -11,50 +10,46 @@ body:has(.qualityGrid) .pageHero {
   isolation: isolate !important;
 }
 
-/* MANUFACTURING — deep blue industrial banner with a clearly visible glove panel */
+/* MANUFACTURING — keep the glove fully below the header and use black copy */
 body:has(.manufacturingPage) .pageHero {
   background:
-    radial-gradient(circle at 78% 52%, rgba(64,176,255,.22) 0 9%, transparent 9.5%),
-    radial-gradient(circle at 78% 52%, transparent 0 17%, rgba(64,176,255,.16) 17.2% 17.8%, transparent 18.2%),
-    radial-gradient(circle at 78% 52%, transparent 0 28%, rgba(64,176,255,.11) 28.2% 28.7%, transparent 29.2%),
-    linear-gradient(110deg, #001337 0%, #043b78 58%, #0874c9 100%) !important;
-  color: #fff !important;
+    radial-gradient(circle at 80% 54%, rgba(64,176,255,.22) 0 9%, transparent 9.5%),
+    radial-gradient(circle at 80% 54%, transparent 0 18%, rgba(64,176,255,.16) 18.2% 18.8%, transparent 19.2%),
+    radial-gradient(circle at 80% 54%, transparent 0 29%, rgba(64,176,255,.11) 29.2% 29.8%, transparent 30.2%),
+    linear-gradient(110deg, #eef5fb 0%, #dcebf7 55%, #c5dff1 100%) !important;
+  color: #000 !important;
 }
 
 body:has(.manufacturingPage) .pageHero::after {
   content: "";
   position: absolute;
   z-index: 1;
-  top: 0;
-  right: 0;
-  width: 52%;
-  height: 100%;
+  top: 12%;
+  right: 1%;
+  width: 48%;
+  height: 88%;
   background-image: url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png');
   background-repeat: no-repeat;
-  background-position: 72% 50%;
-  background-size: min(620px, 78%) auto;
-  filter: drop-shadow(0 28px 38px rgba(0,0,0,.30));
+  background-position: center center;
+  background-size: contain;
+  filter: drop-shadow(0 24px 34px rgba(0,0,0,.24));
 }
 
 body:has(.manufacturingPage) .pageHero .container {
   position: relative;
   z-index: 3;
-  max-width: 1200px;
-}
-
-body:has(.manufacturingPage) .pageHero h1,
-body:has(.manufacturingPage) .pageHero p,
-body:has(.manufacturingPage) .pageHero .eyebrow {
-  color: #fff !important;
-}
-
-body:has(.manufacturingPage) .pageHero .container {
   width: 48%;
   margin-left: max(24px, calc((100% - 1200px) / 2));
   margin-right: auto;
 }
 
-/* QUALITY — premium white/blue banner with an intentionally visible white glove */
+body:has(.manufacturingPage) .pageHero h1,
+body:has(.manufacturingPage) .pageHero p,
+body:has(.manufacturingPage) .pageHero .eyebrow {
+  color: #000 !important;
+}
+
+/* QUALITY — unchanged from the working redesign */
 body:has(.qualityGrid) .pageHero {
   background:
     radial-gradient(circle at 78% 52%, rgba(0,86,160,.09) 0 10%, transparent 10.5%),
@@ -92,7 +87,6 @@ body:has(.qualityGrid) .pageHero h1,
 body:has(.qualityGrid) .pageHero .eyebrow { color: #001337 !important; }
 body:has(.qualityGrid) .pageHero p { color: #526274 !important; }
 
-/* Mobile: keep the artwork visible without covering the copy. */
 @media (max-width: 700px) {
   body:has(.manufacturingPage) .pageHero,
   body:has(.qualityGrid) .pageHero { min-height: 520px !important; }
