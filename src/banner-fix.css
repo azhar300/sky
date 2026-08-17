@@ -1,44 +1,8 @@
-/* Page-specific banner photography. */
-body:has(.manufacturingPage) .pageHero {
-  background-image: linear-gradient(90deg, rgba(0,19,55,.82), rgba(0,19,55,.28)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/SLGI-TG-06.png') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  min-height: 420px !important;
-}
-body:has(.qualityGrid) .pageHero {
-  background-image: linear-gradient(90deg, rgba(255,255,255,.72), rgba(255,255,255,.10)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/SLGI-GG-05.png') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  min-height: 420px !important;
-}
-
-/* OEM hero. */
-main:has(.oemPage) .pageHero,
-main:has(.oemBand) .pageHero,
-main:has(.oemChecklist) .pageHero {position:relative!important;min-height:540px!important;background:#061a31!important;overflow:hidden!important}
-main:has(.oemPage) .pageHero>.container,
-main:has(.oemBand) .pageHero>.container,
-main:has(.oemChecklist) .pageHero>.container {position:relative!important;z-index:3!important;min-height:540px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
-main:has(.oemPage) .pageHero>.container::before,
-main:has(.oemBand) .pageHero>.container::before,
-main:has(.oemChecklist) .pageHero>.container::before {content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background-image:linear-gradient(90deg,rgba(0,19,55,.46),rgba(0,19,55,.12)),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821986/SLGI-MG-05.png')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
-main:has(.oemPage) .pageHero>.container>*,main:has(.oemBand) .pageHero>.container>*,main:has(.oemChecklist) .pageHero>.container>*{position:relative!important;z-index:2!important}
-main:has(.oemPage) .pageHero::before,main:has(.oemBand) .pageHero::before,main:has(.oemChecklist) .pageHero::before,main:has(.oemPage) .pageHero::after,main:has(.oemBand) .pageHero::after,main:has(.oemChecklist) .pageHero::after{display:none!important;content:none!important}
-
-/* MAIN HOME HERO — supplied Cloudinary image. */
-main:has(.heroCatalog) .heroCatalog{position:relative!important;overflow:hidden!important;background:#061a31!important}
-main:has(.heroCatalog) .heroCatalogArt{height:620px!important;position:relative!important;overflow:hidden!important;background:#061a31!important;border-radius:0 0 0 82px!important;box-shadow:none!important;isolation:isolate!important}
-/* Use the existing real <img> element for the hero photo so no CSS background/filter can soften it. */
-main:has(.heroCatalog) .heroCatalogArt::before,main:has(.heroCatalog) .heroCatalogArt::after{display:none!important;content:none!important}
-main:has(.heroCatalog) .heroCatalogArt .heroProductCollage{display:block!important;position:absolute!important;inset:24px 24px 24px 0!important;z-index:2!important}
-main:has(.heroCatalog) .heroCatalogArt .heroProductCollage .heroProduct{display:none!important}
-main:has(.heroCatalog) .heroCatalogArt .heroProductCollage .heroProduct.p1{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;object-fit:cover!important;object-position:center!important;transform:none!important;filter:none!important;opacity:1!important;mix-blend-mode:normal!important;border-radius:0 0 0 82px!important;content:url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786961810/ChatGPT_Image_Aug_17_2026_03_06_29_PM.png')!important}
-main:has(.heroCatalog) .heroCatalogArt .worldDisc,main:has(.heroCatalog) .heroCatalogArt .heroTag{display:none!important}
-main:has(.heroCatalog) .heroBlob.one,main:has(.heroCatalog) .heroBlob.two{display:none!important}
-main:has(.heroCatalog) .catalogCurve{background:#061a31!important}
-@media(max-width:900px){main:has(.heroCatalog) .heroCatalogArt{height:500px!important;margin:0!important;border-radius:0 0 0 58px!important}main:has(.heroCatalog) .heroCatalogArt .heroProductCollage{inset:16px 16px 16px 0!important}main:has(.heroCatalog) .heroCatalogArt .heroProductCollage .heroProduct.p1{border-radius:0 0 0 58px!important}}
-@media(max-width:620px){main:has(.heroCatalog) .heroCatalogArt{height:420px!important;border-radius:0 0 0 42px!important}main:has(.heroCatalog) .heroCatalogArt .heroProductCollage{inset:12px 12px 12px 0!important}main:has(.heroCatalog) .heroCatalogArt .heroProductCollage .heroProduct.p1{border-radius:0 0 0 42px!important}}
-
-@media(max-width:700px){body:has(.manufacturingPage) .pageHero,body:has(.qualityGrid) .pageHero{min-height:420px!important}main:has(.oemPage) .pageHero,main:has(.oemBand) .pageHero,main:has(.oemChecklist) .pageHero,main:has(.oemPage) .pageHero>.container,main:has(.oemBand) .pageHero>.container,main:has(.oemChecklist) .pageHero>.container{min-height:500px!important}main:has(.oemPage) .pageHero>.container::before,main:has(.oemBand) .pageHero>.container::before,main:has(.oemChecklist) .pageHero>.container::before{background-position:center center!important}}
+/* Preserve existing page-specific banners. Header branding only. */
+.header .brand{display:flex!important;align-items:center!important;gap:12px!important;white-space:nowrap!important}
+.header .brand::after{content:'SKYLINE GLOBAL INDUSTRIES';font-family:var(--display,Arial,sans-serif)!important;font-size:15px!important;font-weight:800!important;letter-spacing:.08em!important;color:#ffffff!important;line-height:1!important}
+.header{background:linear-gradient(90deg,#ffffff 0%,#ffffff 31%,rgba(255,255,255,.94) 38%,rgba(255,255,255,.10) 62%,rgba(6,26,49,.92) 100%)!important}
+.header .brand img{max-width:150px!important;height:auto!important;display:block!important}
+.header .brand::after{color:#061a31!important;text-shadow:none!important}
+@media(max-width:900px){.header .brand{gap:8px!important}.header .brand::after{font-size:11px!important;letter-spacing:.045em!important}.header .brand img{max-width:125px!important}.header{background:linear-gradient(90deg,#fff 0%,#fff 48%,rgba(255,255,255,.88) 58%,rgba(6,26,49,.92) 100%)!important}}
+@media(max-width:620px){.header .brand::after{font-size:9px!important;max-width:145px!important;white-space:normal!important;line-height:1.05!important}.header .brand img{max-width:105px!important}}
