@@ -14,148 +14,28 @@ body:has(.qualityGrid) .pageHero {
   min-height: 420px !important;
 }
 
-/* OEM ONLY: dedicated visual layer inside the hero so no competing background rule can hide the photo. */
+/* OEM hero. */
 main:has(.oemPage) .pageHero,
 main:has(.oemBand) .pageHero,
-main:has(.oemChecklist) .pageHero {
-  position: relative !important;
-  min-height: 540px !important;
-  background: #061a31 !important;
-  overflow: hidden !important;
-}
-main:has(.oemPage) .pageHero > .container,
-main:has(.oemBand) .pageHero > .container,
-main:has(.oemChecklist) .pageHero > .container {
-  position: relative !important;
-  z-index: 3 !important;
-  min-height: 540px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-}
-main:has(.oemPage) .pageHero > .container::before,
-main:has(.oemBand) .pageHero > .container::before,
-main:has(.oemChecklist) .pageHero > .container::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  background-image: linear-gradient(90deg, rgba(0,19,55,.46), rgba(0,19,55,.12)), url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821986/SLGI-MG-05.png') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-}
-main:has(.oemPage) .pageHero > .container > *,
-main:has(.oemBand) .pageHero > .container > *,
-main:has(.oemChecklist) .pageHero > .container > * {
-  position: relative !important;
-  z-index: 2 !important;
-}
-main:has(.oemPage) .pageHero::before,
-main:has(.oemBand) .pageHero::before,
-main:has(.oemChecklist) .pageHero::before,
-main:has(.oemPage) .pageHero::after,
-main:has(.oemBand) .pageHero::after,
-main:has(.oemChecklist) .pageHero::after {
-  display: none !important;
-  content: none !important;
-}
+main:has(.oemChecklist) .pageHero {position:relative!important;min-height:540px!important;background:#061a31!important;overflow:hidden!important}
+main:has(.oemPage) .pageHero>.container,
+main:has(.oemBand) .pageHero>.container,
+main:has(.oemChecklist) .pageHero>.container {position:relative!important;z-index:3!important;min-height:540px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+main:has(.oemPage) .pageHero>.container::before,
+main:has(.oemBand) .pageHero>.container::before,
+main:has(.oemChecklist) .pageHero>.container::before {content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background-image:linear-gradient(90deg,rgba(0,19,55,.46),rgba(0,19,55,.12)),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821986/SLGI-MG-05.png')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+main:has(.oemPage) .pageHero>.container>*,main:has(.oemBand) .pageHero>.container>*,main:has(.oemChecklist) .pageHero>.container>*{position:relative!important;z-index:2!important}
+main:has(.oemPage) .pageHero::before,main:has(.oemBand) .pageHero::before,main:has(.oemChecklist) .pageHero::before,main:has(.oemPage) .pageHero::after,main:has(.oemBand) .pageHero::after,main:has(.oemChecklist) .pageHero::after{display:none!important;content:none!important}
 
-/* MAIN HOME HERO: use the supplied Cloudinary hero image directly, matching the proven OEM pattern. */
-main:has(.heroCatalog) .heroCatalog {
-  position: relative !important;
-  min-height: 760px !important;
-  background: #071a2c !important;
-  overflow: hidden !important;
-}
-main:has(.heroCatalog) .heroCatalogGrid {
-  position: relative !important;
-  z-index: 4 !important;
-}
-main:has(.heroCatalog) .heroCatalogArt {
-  position: relative !important;
-  min-height: 700px !important;
-  height: 700px !important;
-  overflow: hidden !important;
-  background: #071a2c !important;
-  border-radius: 0 0 0 120px !important;
-  isolation: isolate !important;
-}
-main:has(.heroCatalog) .heroCatalogArt::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  display: block !important;
-  background-image: linear-gradient(90deg, rgba(3,18,34,.12), rgba(3,18,34,.02)), url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786961810/ChatGPT_Image_Aug_17_2026_03_06_29_PM.png') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-}
-main:has(.heroCatalog) .heroCatalogArt::after {
-  content: "SKYLINE GLOBAL INDUSTRIES / SIALKOT" !important;
-  position: absolute !important;
-  right: 28px !important;
-  bottom: 24px !important;
-  z-index: 5 !important;
-  padding: 9px 12px !important;
-  color: rgba(255,255,255,.92) !important;
-  background: rgba(3,18,34,.38) !important;
-  border: 1px solid rgba(255,255,255,.24) !important;
-  backdrop-filter: blur(10px) !important;
-  font: 800 8px var(--display) !important;
-  letter-spacing: .2em !important;
-}
-main:has(.heroCatalog) .heroCatalogArt .worldDisc,
-main:has(.heroCatalog) .heroCatalogArt .heroProductCollage,
-main:has(.heroCatalog) .heroCatalogArt .heroTag {
-  display: none !important;
-}
-main:has(.heroCatalog) .heroCatalog .heroBlob.one,
-main:has(.heroCatalog) .heroCatalog .heroBlob.two {
-  display: none !important;
-}
+/* MAIN HOME HERO — supplied Cloudinary image, intentionally smaller and clean. */
+main:has(.heroCatalog) .heroCatalog{position:relative!important;overflow:hidden!important;background:#061a31!important}
+main:has(.heroCatalog) .heroCatalogArt{height:620px!important;position:relative!important;overflow:hidden!important;background:#061a31!important;border-radius:0 0 0 82px!important;box-shadow:none!important;isolation:isolate!important}
+main:has(.heroCatalog) .heroCatalogArt::before{content:""!important;position:absolute!important;inset:24px 24px 24px 0!important;z-index:1!important;background-image:linear-gradient(90deg,rgba(4,18,34,.08),rgba(4,18,34,.02)),url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1400,h_760,g_auto,q_auto,f_auto/v1786961810/ChatGPT_Image_Aug_17_2026_03_06_29_PM.png')!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;border-radius:0 0 0 82px!important}
+main:has(.heroCatalog) .heroCatalogArt::after{content:""!important;position:absolute!important;inset:24px 24px 24px 0!important;z-index:2!important;background:linear-gradient(180deg,rgba(2,13,25,0) 55%,rgba(2,13,25,.28) 100%)!important;border-radius:0 0 0 82px!important;pointer-events:none!important}
+main:has(.heroCatalog) .heroCatalogArt .worldDisc,main:has(.heroCatalog) .heroCatalogArt .heroProductCollage,main:has(.heroCatalog) .heroCatalogArt .heroTag{display:none!important}
+main:has(.heroCatalog) .heroBlob.one,main:has(.heroCatalog) .heroBlob.two{display:none!important}
+main:has(.heroCatalog) .catalogCurve{background:#061a31!important}
+@media(max-width:900px){main:has(.heroCatalog) .heroCatalogArt{height:500px!important;margin:0!important;border-radius:0 0 0 58px!important}main:has(.heroCatalog) .heroCatalogArt::before,main:has(.heroCatalog) .heroCatalogArt::after{inset:16px 16px 16px 0!important;border-radius:0 0 0 58px!important}}
+@media(max-width:620px){main:has(.heroCatalog) .heroCatalogArt{height:420px!important;border-radius:0 0 0 42px!important}main:has(.heroCatalog) .heroCatalogArt::before,main:has(.heroCatalog) .heroCatalogArt::after{inset:12px 12px 12px 0!important;border-radius:0 0 0 42px!important}}
 
-@media (max-width:900px) {
-  main:has(.heroCatalog) .heroCatalog { min-height: auto !important; }
-  main:has(.heroCatalog) .heroCatalogArt {
-    min-height: 540px !important;
-    height: 540px !important;
-    border-radius: 0 0 0 70px !important;
-  }
-}
-@media (max-width:620px) {
-  main:has(.heroCatalog) .heroCatalogArt {
-    min-height: 450px !important;
-    height: 450px !important;
-    border-radius: 0 0 0 48px !important;
-  }
-  main:has(.heroCatalog) .heroCatalogArt::before {
-    background-position: center center !important;
-  }
-  main:has(.heroCatalog) .heroCatalogArt::after {
-    right: 16px !important;
-    bottom: 18px !important;
-    font-size: 7px !important;
-  }
-}
-
-@media (max-width:700px) {
-  body:has(.manufacturingPage) .pageHero,
-  body:has(.qualityGrid) .pageHero {
-    min-height: 420px !important;
-  }
-  main:has(.oemPage) .pageHero,
-  main:has(.oemBand) .pageHero,
-  main:has(.oemChecklist) .pageHero,
-  main:has(.oemPage) .pageHero > .container,
-  main:has(.oemBand) .pageHero > .container,
-  main:has(.oemChecklist) .pageHero > .container {
-    min-height: 500px !important;
-  }
-  main:has(.oemPage) .pageHero > .container::before,
-  main:has(.oemBand) .pageHero > .container::before,
-  main:has(.oemChecklist) .pageHero > .container::before {
-    background-position: center center !important;
-  }
-}
+@media(max-width:700px){body:has(.manufacturingPage) .pageHero,body:has(.qualityGrid) .pageHero{min-height:420px!important}main:has(.oemPage) .pageHero,main:has(.oemBand) .pageHero,main:has(.oemChecklist) .pageHero,main:has(.oemPage) .pageHero>.container,main:has(.oemBand) .pageHero>.container,main:has(.oemChecklist) .pageHero>.container{min-height:500px!important}main:has(.oemPage) .pageHero>.container::before,main:has(.oemBand) .pageHero>.container::before,main:has(.oemChecklist) .pageHero>.container::before{background-position:center center!important}}
