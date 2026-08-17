@@ -14,6 +14,7 @@ import './reference-redesign.css';
 import './manufacturing-quality-overrides.css';
 import './final-visual-polish.css';
 import './banner-fix.css';
+import './credentials-enhancement.css';
 import './contact-enhancements';
 import './legal-links';
 import './gallery-fix';
