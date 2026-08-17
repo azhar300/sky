@@ -29,14 +29,12 @@ function addContactStyles() {
     .contactPage .contactForm input:focus,.contactPage .contactForm textarea:focus{border-color:#1599b3!important;box-shadow:0 0 0 3px rgba(21,153,179,.1)!important}
     .contactPage .contactForm button{justify-self:start!important;margin-top:4px!important}
     .contactPage .skylineContactExtra{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:#526274}
-    .productCard{position:relative!important}
-    .skylineProductQuote{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;margin:14px!important;padding:11px 15px!important;border:1px solid #35b8cf!important;border-radius:4px!important;background:#35b8cf!important;color:#fff!important;font:800 10px var(--display)!important;letter-spacing:.02em!important;text-transform:none!important;line-height:1!important;cursor:pointer!important;transition:transform .2s,box-shadow .2s,background .2s!important}
-    .skylineProductQuote:hover{transform:translateY(-2px)!important;background:#1eaec5!important;box-shadow:0 10px 22px rgba(53,184,207,.25)!important}
-    .productInfo .skylineProductQuote{display:inline-flex!important;width:auto!important}
-    .skylineGalleryLink{display:block!important;position:relative!important;width:100%!important;height:100%!important;color:inherit!important}
-    .skylineGalleryLink img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important}
-    .skylineGalleryLink .skylineGalleryCta{position:absolute!important;left:18px!important;bottom:18px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 13px!important;border:1px solid #35b8cf!important;border-radius:4px!important;background:#35b8cf!important;color:#fff!important;font:800 9px var(--display)!important;letter-spacing:.03em!important;z-index:8!important}
-    @media(max-width:800px){.contactPage .contactGrid{grid-template-columns:1fr!important;gap:40px!important}.contactPage .contactForm{grid-template-columns:1fr!important}.contactPage .contactForm label:nth-last-of-type(1),.contactPage .contactForm button{grid-column:auto!important}.contactPage .contactForm button{width:100%!important}.skylineProductQuote{margin:12px 14px 16px!important;width:calc(100% - 28px)!important}.skylineGalleryLink .skylineGalleryCta{left:12px!important;bottom:12px!important}}
+    .skylineProductQuote{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;margin:0 14px 16px!important;padding:11px 15px!important;border:1px solid var(--cyan,#1599b3)!important;border-radius:4px!important;background:var(--cyan,#1599b3)!important;color:#fff!important;font:800 10px var(--display)!important;letter-spacing:.02em!important;text-transform:none!important;line-height:1!important;cursor:pointer!important;appearance:none!important}
+    .skylineProductQuote:hover{transform:translateY(-2px)!important;background:#0a8199!important;box-shadow:0 10px 22px rgba(21,153,179,.18)!important}
+    .skylineGalleryLink{position:absolute!important;right:14px!important;bottom:14px!important;z-index:8!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:9px 12px!important;border:1px solid rgba(255,255,255,.38)!important;border-radius:4px!important;background:rgba(0,19,55,.8)!important;color:#fff!important;font:800 9px var(--display)!important;letter-spacing:.04em!important;text-transform:uppercase!important;cursor:pointer!important;backdrop-filter:blur(8px)!important}
+    .galleryArt{position:relative!important}
+    .skylineGalleryLink:hover{background:#1599b3!important;border-color:#1599b3!important}
+    @media(max-width:800px){.contactPage .contactGrid{grid-template-columns:1fr!important;gap:40px!important}.contactPage .contactForm{grid-template-columns:1fr!important}.contactPage .contactForm label:nth-last-of-type(1),.contactPage .contactForm button{grid-column:auto!important}.contactPage .contactForm button{width:100%!important}.skylineProductQuote{width:calc(100% - 28px)!important;margin:12px 14px 16px!important}.skylineGalleryLink{right:10px!important;bottom:10px!important}}
   `;
   document.head.appendChild(style);
 }
@@ -53,36 +51,32 @@ function addProductQuoteButtons() {
     button.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      window.location.href = `/contact?product=${encodeURIComponent(product)}&sku=${encodeURIComponent(sku)}&category=${encodeURIComponent(category)}`;
+      const params = new URLSearchParams({ product, sku, category });
+      window.location.assign(`/contact?${params.toString()}`);
     });
     card.appendChild(button);
   });
 }
 function addGalleryLinks() {
-  document.querySelectorAll<HTMLElement>('.galleryPage .galleryArt').forEach((card) => {
+  const categoryMap: Record<string, string> = { MG: 'motorbike-gloves', FG: 'fitness-gloves', GG: 'golf-gloves', CG: 'cycling-gloves', RAG: 'rugby-gloves', TG: 'tactical-gloves' };
+  document.querySelectorAll<HTMLElement>('.galleryArt').forEach((card) => {
     if (card.querySelector('.skylineGalleryLink')) return;
-    const image = card.querySelector<HTMLImageElement>('img');
-    if (!image) return;
-    const code = image.src.match(/(SLGI-[A-Z]+-\d+)/)?.[1];
-    if (!code) return;
-    const category = code.match(/^(SLGI-[A-Z]+)/)?.[1] || '';
-    const map: Record<string,string> = {
-      'SLGI-MG':'motorbike-gloves', 'SLGI-FG':'fitness-gloves', 'SLGI-GG':'golf-gloves',
-      'SLGI-CG':'cycling-gloves', 'SLGI-RAG':'rugby-gloves', 'SLGI-TG':'tactical-gloves'
-    };
-    const categorySlug = map[category] || 'motorbike-gloves';
-    const index = code.split('-').pop() || '01';
-    const slug = `${categorySlug}-${index}`;
+    const img = card.querySelector('img');
+    if (!img) return;
+    const match = img.src.match(/(SLGI-(?:MG|FG|GG|CG|RAG|TG)-\d{2})/i);
+    if (!match) return;
+    const code = match[1].toUpperCase();
+    const codeParts = code.split('-');
+    const prefix = codeParts[1];
+    const index = Number(codeParts[2]);
+    const category = categoryMap[prefix];
+    if (!category || !Number.isFinite(index)) return;
+    const slug = `${category}-${String(index).padStart(2, '0')}`;
     const link = document.createElement('a');
     link.className = 'skylineGalleryLink';
-    link.href = `/products/${categorySlug}/${slug}`;
-    const currentImage = image;
-    const cta = document.createElement('span');
-    cta.className = 'skylineGalleryCta';
-    cta.textContent = 'View Product';
-    link.appendChild(currentImage);
-    link.appendChild(cta);
-    card.replaceChildren(link);
+    link.href = `/products/${category}/${slug}`;
+    link.textContent = 'View Product';
+    card.appendChild(link);
   });
 }
 function enhanceContactPage() {
