@@ -61,6 +61,85 @@ main:has(.oemChecklist) .pageHero::after {
   content: none !important;
 }
 
+/* MAIN HOME HERO: use the supplied Cloudinary hero image directly, matching the proven OEM pattern. */
+main:has(.heroCatalog) .heroCatalog {
+  position: relative !important;
+  min-height: 760px !important;
+  background: #071a2c !important;
+  overflow: hidden !important;
+}
+main:has(.heroCatalog) .heroCatalogGrid {
+  position: relative !important;
+  z-index: 4 !important;
+}
+main:has(.heroCatalog) .heroCatalogArt {
+  position: relative !important;
+  min-height: 700px !important;
+  height: 700px !important;
+  overflow: hidden !important;
+  background: #071a2c !important;
+  border-radius: 0 0 0 120px !important;
+  isolation: isolate !important;
+}
+main:has(.heroCatalog) .heroCatalogArt::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  display: block !important;
+  background-image: linear-gradient(90deg, rgba(3,18,34,.12), rgba(3,18,34,.02)), url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786961810/ChatGPT_Image_Aug_17_2026_03_06_29_PM.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+main:has(.heroCatalog) .heroCatalogArt::after {
+  content: "SKYLINE GLOBAL INDUSTRIES / SIALKOT" !important;
+  position: absolute !important;
+  right: 28px !important;
+  bottom: 24px !important;
+  z-index: 5 !important;
+  padding: 9px 12px !important;
+  color: rgba(255,255,255,.92) !important;
+  background: rgba(3,18,34,.38) !important;
+  border: 1px solid rgba(255,255,255,.24) !important;
+  backdrop-filter: blur(10px) !important;
+  font: 800 8px var(--display) !important;
+  letter-spacing: .2em !important;
+}
+main:has(.heroCatalog) .heroCatalogArt .worldDisc,
+main:has(.heroCatalog) .heroCatalogArt .heroProductCollage,
+main:has(.heroCatalog) .heroCatalogArt .heroTag {
+  display: none !important;
+}
+main:has(.heroCatalog) .heroCatalog .heroBlob.one,
+main:has(.heroCatalog) .heroCatalog .heroBlob.two {
+  display: none !important;
+}
+
+@media (max-width:900px) {
+  main:has(.heroCatalog) .heroCatalog { min-height: auto !important; }
+  main:has(.heroCatalog) .heroCatalogArt {
+    min-height: 540px !important;
+    height: 540px !important;
+    border-radius: 0 0 0 70px !important;
+  }
+}
+@media (max-width:620px) {
+  main:has(.heroCatalog) .heroCatalogArt {
+    min-height: 450px !important;
+    height: 450px !important;
+    border-radius: 0 0 0 48px !important;
+  }
+  main:has(.heroCatalog) .heroCatalogArt::before {
+    background-position: center center !important;
+  }
+  main:has(.heroCatalog) .heroCatalogArt::after {
+    right: 16px !important;
+    bottom: 18px !important;
+    font-size: 7px !important;
+  }
+}
+
 @media (max-width:700px) {
   body:has(.manufacturingPage) .pageHero,
   body:has(.qualityGrid) .pageHero {
