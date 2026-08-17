@@ -1,10 +1,49 @@
-/* Page-specific banner photography. Only affects the existing page hero. */
-.pageHero:has(+ .oemPage){background-image:linear-gradient(90deg,rgba(0,19,55,.92),rgba(0,19,55,.58)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png') !important;background-size:cover !important;background-position:center !important;background-repeat:no-repeat !important;}
-.pageHero:has(+ .manufacturingPage){background-image:linear-gradient(90deg,rgba(0,19,55,.94),rgba(0,19,55,.60)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') !important;background-size:cover !important;background-position:center !important;background-repeat:no-repeat !important;}
-.pageHero:has(+ .qualityGrid){background-image:linear-gradient(90deg,rgba(0,19,55,.94),rgba(0,19,55,.58)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') !important;background-size:cover !important;background-position:center !important;background-repeat:no-repeat !important;}
-@media(max-width:700px){
-.pageHero:has(+ .oemPage),.pageHero:has(+ .manufacturingPage),.pageHero:has(+ .qualityGrid){background-position:center !important;}
+/* Skyline — Manufacturing + Quality banner redesign only.
+   OEM and every other page remain untouched. */
+
+/* Manufacturing: blue industrial composition with real glove photography */
+.pageHero:has(~ .manufacturingPage),
+.pageHero:has(+ .manufacturingPage),
+body:has(.manufacturingPage) .pageHero {
+  background:
+    radial-gradient(circle at 82% 50%, rgba(105,212,229,.20) 0 12%, transparent 12.5%),
+    radial-gradient(circle at 82% 50%, transparent 0 22%, rgba(105,212,229,.13) 22.2% 22.6%, transparent 22.8%),
+    radial-gradient(circle at 82% 50%, transparent 0 34%, rgba(105,212,229,.09) 34.2% 34.6%, transparent 34.8%),
+    linear-gradient(90deg, rgba(0,19,55,.99) 0%, rgba(0,36,82,.96) 43%, rgba(0,59,122,.62) 72%, rgba(0,59,122,.25) 100%),
+    url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') center/cover no-repeat !important;
+  min-height:440px !important;
+  color:#fff !important;
+  border:0 !important;
 }
 
-/* Footer logo visibility fix — preserves the existing logo treatment. */
+/* Quality: bright premium composition with white/light glove photography */
+.pageHero:has(~ .qualityGrid),
+.pageHero:has(+ .qualityGrid),
+body:has(.qualityGrid) .pageHero {
+  background:
+    radial-gradient(circle at 82% 50%, rgba(0,59,122,.10) 0 12%, transparent 12.5%),
+    radial-gradient(circle at 82% 50%, transparent 0 22%, rgba(0,59,122,.075) 22.2% 22.6%, transparent 22.8%),
+    radial-gradient(circle at 82% 50%, transparent 0 34%, rgba(0,59,122,.055) 34.2% 34.6%, transparent 34.8%),
+    linear-gradient(90deg, rgba(248,251,253,.99) 0%, rgba(239,246,251,.96) 48%, rgba(220,235,245,.72) 76%, rgba(220,235,245,.28) 100%),
+    url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') center/cover no-repeat !important;
+  min-height:440px !important;
+  border:0 !important;
+}
+
+/* Keep hero content above the photography and circles. */
+body:has(.manufacturingPage) .pageHero .container,
+body:has(.qualityGrid) .pageHero .container { position:relative; z-index:3; }
+
+body:has(.manufacturingPage) .pageHero h1,
+body:has(.manufacturingPage) .pageHero p { color:#fff !important; }
+
+body:has(.qualityGrid) .pageHero h1 { color:#001337 !important; }
+body:has(.qualityGrid) .pageHero p { color:#526274 !important; }
+
+/* Footer logo: preserve the already-fixed working state. */
 .footerLogo{filter:none !important;opacity:1 !important;visibility:visible !important;background:#fff !important;padding:7px 12px !important;border-radius:2px !important;}
+
+@media(max-width:700px){
+  body:has(.manufacturingPage) .pageHero,
+  body:has(.qualityGrid) .pageHero { min-height:360px !important; background-position:center !important; }
+}
