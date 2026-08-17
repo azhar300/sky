@@ -13,10 +13,10 @@ body:has(.qualityGrid) .pageHero {
   background-repeat: no-repeat !important;
   min-height: 420px !important;
 }
-/* OEM page has .oemPage and .oemChecklist below the shared PageHero. */
+/* OEM page: use the verified versioned Cloudinary asset URL. */
 body:has(.oemPage) .pageHero,
 body:has(.oemChecklist) .pageHero {
-  background-image: linear-gradient(90deg, rgba(0,19,55,.82), rgba(0,19,55,.28)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/SLGI-MG-05.png') !important;
+  background-image: linear-gradient(90deg, rgba(0,19,55,.82), rgba(0,19,55,.28)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1800,h_760,g_auto,q_auto,f_auto/v1786821986/SLGI-MG-05.png') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
