@@ -13,12 +13,6 @@
     return data ? `/products/${data[0]}/${data[0]}-${data[2]}` : '/products';
   };
 
-  const navigate = (path) => {
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const addStyles = () => {
     if (document.getElementById('skyline-gallery-redesign-styles')) return;
     const style = document.createElement('style');
@@ -42,6 +36,8 @@
       .galleryView { flex:none; border:1px solid rgba(255,255,255,.32); border-radius:999px; padding:11px 14px; font-size:10px; font-weight:800; letter-spacing:.12em; white-space:nowrap; background:rgba(255,255,255,.1); backdrop-filter:blur(12px); }
       .galleryView span { margin-left:7px; font-size:14px; }
       .galleryRedesigned .galleryProductCard > span:not(.galleryView) { position:absolute; z-index:3; top:22px; left:24px; color:#fff; font-size:11px; font-weight:800; letter-spacing:.14em; opacity:.85; }
+      .galleryProductAnchor { position:absolute; inset:0; z-index:4; display:block; color:inherit; text-decoration:none; border-radius:inherit; }
+      .galleryProductAnchor:focus-visible { outline:3px solid #fff; outline-offset:-6px; }
       @media (max-width:900px) { .galleryRedesigned .galleryTitle { grid-template-columns:1fr; gap:14px; } .galleryRedesigned .galleryProductCard, .galleryRedesigned .galleryProductCard:nth-child(1), .galleryRedesigned .galleryProductCard:nth-child(6) { grid-column:span 6; min-height:420px; } }
       @media (max-width:600px) { .galleryRedesigned .galleryGrid { grid-template-columns:1fr; } .galleryRedesigned .galleryProductCard, .galleryRedesigned .galleryProductCard:nth-child(1), .galleryRedesigned .galleryProductCard:nth-child(6) { grid-column:span 1; min-height:430px; } .galleryCardInfo { left:20px; right:20px; bottom:20px; } .galleryCardInfo strong { font-size:19px; } .galleryView { padding:9px 11px; } }
     `;
@@ -59,9 +55,7 @@
     addStyles();
 
     const title = page.querySelector('.galleryTitle');
-    if (title) {
-      title.insertAdjacentHTML('beforeend', '<div class="galleryIntroCopy">Explore selected Skyline products directly. Open any glove to view its full product presentation and request a quotation.</div>');
-    }
+    if (title) title.insertAdjacentHTML('beforeend', '<div class="galleryIntroCopy">Explore selected Skyline products directly. Open any glove to view its full product presentation and request a quotation.</div>');
 
     grid.querySelectorAll('.galleryArt').forEach((card, index) => {
       const img = card.querySelector('img');
@@ -73,8 +67,6 @@
 
       card.classList.add('galleryProductCard');
       card.dataset.productCode = code;
-      card.setAttribute('role', 'link');
-      card.setAttribute('tabindex', '0');
       card.setAttribute('aria-label', `View ${meta[1]} ${meta[2]}`);
 
       const number = card.querySelector('span');
@@ -90,17 +82,8 @@
           </div>
           <span class="galleryView">VIEW PRODUCT <span>↗</span></span>
         </div>
+        <a class="galleryProductAnchor" href="${productPath(code)}" aria-label="Open ${meta[1]} ${meta[2]}"></a>
       `);
-
-      const go = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        navigate(productPath(code));
-      };
-      card.addEventListener('click', go);
-      card.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') go(event);
-      });
     });
   };
 
