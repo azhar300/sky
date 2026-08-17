@@ -15,6 +15,7 @@ import './manufacturing-quality-overrides.css';
 import './final-visual-polish.css';
 import './banner-fix.css';
 import './credentials-enhancement.css';
+import './mobile-header-fix.css';
 import './contact-enhancements';
 import './legal-links';
 import './gallery-fix';
