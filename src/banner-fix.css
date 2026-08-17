@@ -1,49 +1,128 @@
-/* Skyline — Manufacturing + Quality banner redesign only.
-   OEM and every other page remain untouched. */
+/* Skyline — Manufacturing + Quality banner redesign ONLY.
+   OEM, footer structure, products, routing and all other pages remain untouched. */
 
-/* Manufacturing: blue industrial composition with real glove photography */
-.pageHero:has(~ .manufacturingPage),
-.pageHero:has(+ .manufacturingPage),
+/* Shared banner canvas */
+body:has(.manufacturingPage) .pageHero,
+body:has(.qualityGrid) .pageHero {
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 440px !important;
+  border: 0 !important;
+  isolation: isolate !important;
+}
+
+/* MANUFACTURING — deep blue industrial banner with a clearly visible glove panel */
 body:has(.manufacturingPage) .pageHero {
   background:
-    radial-gradient(circle at 82% 50%, rgba(105,212,229,.20) 0 12%, transparent 12.5%),
-    radial-gradient(circle at 82% 50%, transparent 0 22%, rgba(105,212,229,.13) 22.2% 22.6%, transparent 22.8%),
-    radial-gradient(circle at 82% 50%, transparent 0 34%, rgba(105,212,229,.09) 34.2% 34.6%, transparent 34.8%),
-    linear-gradient(90deg, rgba(0,19,55,.99) 0%, rgba(0,36,82,.96) 43%, rgba(0,59,122,.62) 72%, rgba(0,59,122,.25) 100%),
-    url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') center/cover no-repeat !important;
-  min-height:440px !important;
-  color:#fff !important;
-  border:0 !important;
+    radial-gradient(circle at 78% 52%, rgba(64,176,255,.22) 0 9%, transparent 9.5%),
+    radial-gradient(circle at 78% 52%, transparent 0 17%, rgba(64,176,255,.16) 17.2% 17.8%, transparent 18.2%),
+    radial-gradient(circle at 78% 52%, transparent 0 28%, rgba(64,176,255,.11) 28.2% 28.7%, transparent 29.2%),
+    linear-gradient(110deg, #001337 0%, #043b78 58%, #0874c9 100%) !important;
+  color: #fff !important;
 }
 
-/* Quality: bright premium composition with white/light glove photography */
-.pageHero:has(~ .qualityGrid),
-.pageHero:has(+ .qualityGrid),
-body:has(.qualityGrid) .pageHero {
-  background:
-    radial-gradient(circle at 82% 50%, rgba(0,59,122,.10) 0 12%, transparent 12.5%),
-    radial-gradient(circle at 82% 50%, transparent 0 22%, rgba(0,59,122,.075) 22.2% 22.6%, transparent 22.8%),
-    radial-gradient(circle at 82% 50%, transparent 0 34%, rgba(0,59,122,.055) 34.2% 34.6%, transparent 34.8%),
-    linear-gradient(90deg, rgba(248,251,253,.99) 0%, rgba(239,246,251,.96) 48%, rgba(220,235,245,.72) 76%, rgba(220,235,245,.28) 100%),
-    url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') center/cover no-repeat !important;
-  min-height:440px !important;
-  border:0 !important;
+body:has(.manufacturingPage) .pageHero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 52%;
+  height: 100%;
+  background-image: url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png');
+  background-repeat: no-repeat;
+  background-position: 72% 50%;
+  background-size: min(620px, 78%) auto;
+  filter: drop-shadow(0 28px 38px rgba(0,0,0,.30));
 }
 
-/* Keep hero content above the photography and circles. */
-body:has(.manufacturingPage) .pageHero .container,
-body:has(.qualityGrid) .pageHero .container { position:relative; z-index:3; }
+body:has(.manufacturingPage) .pageHero .container {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+}
 
 body:has(.manufacturingPage) .pageHero h1,
-body:has(.manufacturingPage) .pageHero p { color:#fff !important; }
+body:has(.manufacturingPage) .pageHero p,
+body:has(.manufacturingPage) .pageHero .eyebrow {
+  color: #fff !important;
+}
 
-body:has(.qualityGrid) .pageHero h1 { color:#001337 !important; }
-body:has(.qualityGrid) .pageHero p { color:#526274 !important; }
+body:has(.manufacturingPage) .pageHero .container {
+  width: 48%;
+  margin-left: max(24px, calc((100% - 1200px) / 2));
+  margin-right: auto;
+}
 
-/* Footer logo: preserve the already-fixed working state. */
-.footerLogo{filter:none !important;opacity:1 !important;visibility:visible !important;background:#fff !important;padding:7px 12px !important;border-radius:2px !important;}
+/* QUALITY — premium white/blue banner with an intentionally visible white glove */
+body:has(.qualityGrid) .pageHero {
+  background:
+    radial-gradient(circle at 78% 52%, rgba(0,86,160,.09) 0 10%, transparent 10.5%),
+    radial-gradient(circle at 78% 52%, transparent 0 18%, rgba(0,86,160,.075) 18.2% 18.8%, transparent 19.2%),
+    radial-gradient(circle at 78% 52%, transparent 0 29%, rgba(0,86,160,.055) 29.2% 29.8%, transparent 30.2%),
+    linear-gradient(110deg, #ffffff 0%, #f3f8fc 56%, #dcecf7 100%) !important;
+  color: #001337 !important;
+}
 
-@media(max-width:700px){
+body:has(.qualityGrid) .pageHero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 52%;
+  height: 100%;
+  background-image: url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-01.png');
+  background-repeat: no-repeat;
+  background-position: 72% 50%;
+  background-size: min(620px, 78%) auto;
+  filter: drop-shadow(0 24px 32px rgba(0,45,90,.16));
+  mix-blend-mode: multiply;
+}
+
+body:has(.qualityGrid) .pageHero .container {
+  position: relative;
+  z-index: 3;
+  width: 48%;
+  margin-left: max(24px, calc((100% - 1200px) / 2));
+  margin-right: auto;
+}
+
+body:has(.qualityGrid) .pageHero h1,
+body:has(.qualityGrid) .pageHero .eyebrow { color: #001337 !important; }
+body:has(.qualityGrid) .pageHero p { color: #526274 !important; }
+
+/* Mobile: keep the artwork visible without covering the copy. */
+@media (max-width: 700px) {
   body:has(.manufacturingPage) .pageHero,
-  body:has(.qualityGrid) .pageHero { min-height:360px !important; background-position:center !important; }
+  body:has(.qualityGrid) .pageHero { min-height: 520px !important; }
+
+  body:has(.manufacturingPage) .pageHero .container,
+  body:has(.qualityGrid) .pageHero .container {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+  }
+
+  body:has(.manufacturingPage) .pageHero::after,
+  body:has(.qualityGrid) .pageHero::after {
+    width: 100%;
+    height: 48%;
+    top: auto;
+    bottom: -4%;
+    right: 0;
+    background-size: 58% auto;
+    background-position: center bottom;
+  }
+}
+
+/* Preserve the already-working footer logo fix. */
+.footerLogo {
+  filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: #fff !important;
+  padding: 7px 12px !important;
+  border-radius: 2px !important;
 }
