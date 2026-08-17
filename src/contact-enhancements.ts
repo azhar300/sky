@@ -73,12 +73,20 @@ function addGalleryLinks() {
     const category = categoryMap[prefix];
     if (!category || !Number.isFinite(index)) return;
     const slug = `${category}-${String(index).padStart(2, '0')}`;
+    const href = `/products/${category}/${slug}`;
     const link = document.createElement('a');
     link.className = 'skylineGalleryLink';
-    link.href = `/products/${category}/${slug}`;
+    link.href = href;
     link.textContent = 'View Product';
-    // Let the browser perform the normal navigation. Intercepting the click
-    // with window.location was preventing navigation in the deployed SPA.
+    // Keep navigation inside the React Router SPA. A normal <a> causes
+    // Vercel to request the nested URL directly, which can bypass the SPA.
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      window.history.pushState({}, '', href);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo(0, 0);
+    });
     card.appendChild(link);
   });
 }
