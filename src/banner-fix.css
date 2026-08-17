@@ -13,25 +13,32 @@ body:has(.qualityGrid) .pageHero {
   background-repeat: no-repeat !important;
   min-height: 420px !important;
 }
-/* OEM hero: use the verified image directly and remove the legacy dark overlay that hides it. */
+/* OEM hero: target the real DOM structure and remove all legacy pseudo overlays hiding the photo. */
 body:has(.oemPage) .pageHero,
-body:has(.oemChecklist) .pageHero {
-  background-image: linear-gradient(90deg, rgba(0,19,55,.32), rgba(0,19,55,.08)), url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821986/SLGI-MG-05.png') !important;
+body:has(.oemChecklist) .pageHero,
+.pageHero:has(+ .oemPage) {
+  background-color: #061a31 !important;
+  background-image: linear-gradient(90deg, rgba(0,19,55,.45), rgba(0,19,55,.12)), url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821986/SLGI-MG-05.png') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   min-height: 540px !important;
 }
-body:has(.oemPage) .pageHero:before,
-body:has(.oemChecklist) .pageHero:before {
-  content: none !important;
+body:has(.oemPage) .pageHero::before,
+body:has(.oemChecklist) .pageHero::before,
+.pageHero:has(+ .oemPage)::before,
+body:has(.oemPage) .pageHero::after,
+body:has(.oemChecklist) .pageHero::after,
+.pageHero:has(+ .oemPage)::after {
   display: none !important;
+  content: none !important;
 }
 @media (max-width:700px) {
   body:has(.manufacturingPage) .pageHero,
   body:has(.qualityGrid) .pageHero,
   body:has(.oemPage) .pageHero,
-  body:has(.oemChecklist) .pageHero {
+  body:has(.oemChecklist) .pageHero,
+  .pageHero:has(+ .oemPage) {
     min-height: 360px !important;
     background-position: center center !important;
   }
