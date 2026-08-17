@@ -1,0 +1,73 @@
+/* Mobile-only header correction. Desktop header remains unchanged. */
+@media (max-width: 700px) {
+  .header {
+    background: #001337 !important;
+  }
+
+  .header .nav {
+    width: 100%;
+    height: 74px;
+    padding: 0 18px;
+    gap: 0;
+  }
+
+  .header .brand {
+    min-width: 0;
+    width: auto;
+    max-width: calc(100% - 62px);
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .header .brand img {
+    width: 118px;
+    height: 62px;
+    flex: 0 0 118px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .header .brandName {
+    display: none !important;
+  }
+
+  .header .desktopNav,
+  .header .navQuote {
+    display: none !important;
+  }
+
+  .header .menuBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin-left: auto;
+    color: #fff;
+    flex: 0 0 44px;
+  }
+
+  .header .menuBtn svg {
+    width: 29px;
+    height: 29px;
+    stroke-width: 1.7;
+  }
+
+  .header .mobileNav {
+    padding: 12px 20px 22px;
+    background: #001337;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  .header .mobileNav a {
+    color: #fff;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .header .mobileNav .quoteBtn {
+    border-bottom: 0;
+    margin-top: 10px;
+  }
+}
