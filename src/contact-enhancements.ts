@@ -2,13 +2,8 @@ const CONTACT_STORAGE_KEY = 'skyline_contact_details';
 const QUOTE_INTENT_KEY = 'skyline_quote_intent';
 
 function loadSavedContact() {
-  try {
-    return JSON.parse(localStorage.getItem(CONTACT_STORAGE_KEY) || '{}');
-  } catch {
-    return {};
-  }
+  try { return JSON.parse(localStorage.getItem(CONTACT_STORAGE_KEY) || '{}'); } catch { return {}; }
 }
-
 function saveContact(form: HTMLFormElement) {
   const data = {
     name: (form.elements.namedItem('name') as HTMLInputElement | null)?.value || '',
@@ -18,7 +13,6 @@ function saveContact(form: HTMLFormElement) {
   };
   try { localStorage.setItem(CONTACT_STORAGE_KEY, JSON.stringify(data)); } catch {}
 }
-
 function addContactStyles() {
   if (document.getElementById('skyline-contact-enhancements')) return;
   const style = document.createElement('style');
@@ -36,19 +30,20 @@ function addContactStyles() {
     .contactPage .contactForm button{justify-self:start!important;margin-top:4px!important}
     .contactPage .skylineContactExtra{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:#526274}
     .productCard{position:relative!important}
-    .skylineProductQuote{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;margin:0 14px 16px!important;padding:10px 13px!important;border:1px solid var(--cyan,#1599b3)!important;border-radius:4px!important;background:var(--cyan,#1599b3)!important;color:#fff!important;font:800 9px var(--display)!important;letter-spacing:.04em!important;text-transform:uppercase!important;transition:transform .2s,box-shadow .2s,background .2s!important}
+    .skylineProductQuote{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;margin:14px!important;padding:11px 15px!important;border:1px solid var(--cyan,#1599b3)!important;border-radius:4px!important;background:var(--cyan,#1599b3)!important;color:#fff!important;font:800 10px var(--display)!important;letter-spacing:.02em!important;text-transform:none!important;line-height:1!important;transition:transform .2s,box-shadow .2s,background .2s!important}
     .skylineProductQuote:hover{transform:translateY(-2px)!important;background:#0a8199!important;box-shadow:0 10px 22px rgba(21,153,179,.18)!important}
-    @media(max-width:800px){.contactPage .contactGrid{grid-template-columns:1fr!important;gap:40px!important}.contactPage .contactForm{grid-template-columns:1fr!important}.contactPage .contactForm label:nth-last-of-type(1),.contactPage .contactForm button{grid-column:auto!important}.contactPage .contactForm button{width:100%!important}.skylineProductQuote{width:calc(100% - 28px)!important;margin:0 14px 16px!important}}
+    .productInfo .skylineProductQuote{display:inline-flex!important;width:auto!important}
+    @media(max-width:800px){.contactPage .contactGrid{grid-template-columns:1fr!important;gap:40px!important}.contactPage .contactForm{grid-template-columns:1fr!important}.contactPage .contactForm label:nth-last-of-type(1),.contactPage .contactForm button{grid-column:auto!important}.contactPage .contactForm button{width:100%!important}.skylineProductQuote{margin:12px 14px 16px!important;width:calc(100% - 28px)!important}}
   `;
   document.head.appendChild(style);
 }
-
 function addProductQuoteButtons() {
   document.querySelectorAll<HTMLElement>('.productCard').forEach((card) => {
-    if (card.querySelector('.skylineProductQuote')) return;
+    const existing = card.querySelector('.skylineProductQuote');
     const sku = card.querySelector('.productVisual span')?.textContent?.trim() || '';
     const product = card.querySelector('.productInfo h3')?.textContent?.trim() || sku || 'Selected product';
     const category = card.querySelector('.productInfo small')?.textContent?.trim() || '';
+    if (existing) return;
     const link = document.createElement('a');
     link.className = 'skylineProductQuote';
     link.href = `/contact?product=${encodeURIComponent(product)}&sku=${encodeURIComponent(sku)}&category=${encodeURIComponent(category)}`;
@@ -56,7 +51,6 @@ function addProductQuoteButtons() {
     card.appendChild(link);
   });
 }
-
 function enhanceContactPage() {
   const form = document.querySelector<HTMLFormElement>('.contactForm');
   if (!form || form.dataset.skylineEnhanced === 'true') return;
@@ -87,12 +81,7 @@ function enhanceContactPage() {
   const sku = params.get('sku');
   const category = params.get('category');
   if (message && product) {
-    const details = [
-      `I would like a quotation for ${product}.`,
-      sku ? `SKU: ${sku}.` : '',
-      category ? `Category: ${category}.` : '',
-      'Please share your pricing, MOQ and lead time.',
-    ].filter(Boolean).join(' ');
+    const details = [`I would like a quotation for ${product}.`, sku ? `SKU: ${sku}.` : '', category ? `Category: ${category}.` : '', 'Please share your pricing, MOQ and lead time.'].filter(Boolean).join(' ');
     message.value = details;
   } else if (message && !message.value && sessionStorage.getItem(QUOTE_INTENT_KEY) === '1') {
     message.value = 'I would like to request a quotation for your gloves. Please share pricing, MOQ and lead time.';
@@ -111,7 +100,6 @@ function enhanceContactPage() {
   form.addEventListener('input', () => saveContact(form));
   form.addEventListener('submit', () => saveContact(form));
 }
-
 function markQuoteIntent() {
   document.addEventListener('click', (event) => {
     const target = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a.quoteBtn[href*="/contact"]') : null;
@@ -119,17 +107,11 @@ function markQuoteIntent() {
     try { sessionStorage.setItem(QUOTE_INTENT_KEY, '1'); } catch {}
   });
 }
-
 function boot() {
   markQuoteIntent();
-  const observer = new MutationObserver(() => {
-    addProductQuoteButtons();
-    enhanceContactPage();
-  });
+  const observer = new MutationObserver(() => { addProductQuoteButtons(); enhanceContactPage(); });
   observer.observe(document.body, { childList: true, subtree: true });
   addProductQuoteButtons();
   enhanceContactPage();
 }
-
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
-else boot();
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true }); else boot();
