@@ -23,8 +23,32 @@
 .skylineFooterSocialLink.gmail:hover{background:#EA4335;border-color:#EA4335;color:#fff}
 .skylineFooterSocialLink:focus-visible{outline:2px solid #2ab6d3;outline-offset:4px}
 
+/* Use the exact same canonical logo as the header in the footer. */
+.footer .footerLogo{
+  content:url("https://res.cloudinary.com/m2w7btvw/image/upload/v1786908840/skyline/skyline/header-exact-logo.webp");
+  object-fit:contain;
+  object-position:left center;
+}
+
+/* Product-detail facts: give every label/value pair deliberate breathing room. */
+.detailFacts{margin-top:28px;margin-bottom:28px}
+.detailFacts>div{
+  display:grid;
+  grid-template-columns:minmax(88px,110px) minmax(0,1fr);
+  column-gap:22px;
+  align-items:baseline;
+  padding:14px 0;
+  border-top:1px solid var(--line);
+}
+.detailFacts>div:last-child{border-bottom:1px solid var(--line)}
+.detailFacts b{display:block;color:var(--navy);font:800 10px var(--display);letter-spacing:.08em;white-space:nowrap}
+.detailFacts span{display:block;color:#526274;font:500 14px var(--body);min-width:0}
+
 @media (max-width:700px){
   .skylineFooterSocials{gap:9px}
   .skylineFooterSocialLink{width:40px;height:40px;border-radius:12px}
   .skylineFooterSocialLink svg{width:18px;height:18px}
+  .detailFacts>div{grid-template-columns:90px minmax(0,1fr);column-gap:16px;padding:13px 0}
+  .detailFacts b{font-size:9px}
+  .detailFacts span{font-size:13px;line-height:1.45}
 }
