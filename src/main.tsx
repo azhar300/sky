@@ -17,6 +17,7 @@ import './banner-fix.css';
 import './contact-enhancements';
 import './legal-links';
 import './gallery-fix';
+import './credentials-enhancement';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
