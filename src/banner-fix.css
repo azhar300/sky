@@ -1,22 +1,6 @@
-/* Restore only the Manufacturing and Quality page hero banners. */
+/* OEM PAGE HERO — preserve the existing OEM banner only. */
+.pageHero:has(+ .oemPage){background-image:linear-gradient(90deg,rgba(0,19,55,.92),rgba(0,19,55,.58)),url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-01.png') !important;background-size:cover !important;background-position:center !important;background-repeat:no-repeat !important;}
 
-.pageHero:has(+ .manufacturingPage) {
-  background-image: linear-gradient(90deg, rgba(0,19,55,.98) 0%, rgba(0,19,55,.84) 46%, rgba(0,19,55,.28) 100%), url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') !important;
-  background-position: center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-}
-
-.pageHero:has(+ .qualityGrid) {
-  background-image: linear-gradient(90deg, rgba(0,19,55,.98) 0%, rgba(0,19,55,.84) 46%, rgba(0,19,55,.28) 100%), url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') !important;
-  background-position: center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-}
-
-@media (max-width: 900px) {
-  .pageHero:has(+ .manufacturingPage),
-  .pageHero:has(+ .qualityGrid) {
-    background-position: center !important;
-  }
+@media(max-width:700px){
+.pageHero:has(+ .oemPage){background-position:center !important;}
 }
