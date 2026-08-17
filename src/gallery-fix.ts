@@ -16,21 +16,22 @@ const getCode = (card: Element) => {
 
 const wireGallery = () => {
   document.querySelectorAll<HTMLElement>('.galleryPage .galleryArt').forEach((card) => {
-    if (card.dataset.galleryWired === 'true') return;
     const code = getCode(card);
     const route = galleryRoutes[code];
     if (!route) return;
 
-    card.dataset.galleryWired = 'true';
     card.style.cursor = 'pointer';
     card.setAttribute('role', 'link');
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', `Open ${code} product detail`);
 
+    if (card.dataset.galleryWired === 'true') return;
+    card.dataset.galleryWired = 'true';
+
+    // Use a real navigation instead of manually mutating history. This guarantees
+    // the React SPA route is loaded even when another gallery overlay captures clicks.
     const openProduct = () => {
-      window.history.pushState({}, '', route);
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      window.location.assign(route);
     };
 
     card.addEventListener('click', (event) => {
