@@ -34,5 +34,12 @@ main:has(.heroCatalog) .catalogCurve{background:#061a31!important}
 @media(max-width:900px){.header{background:linear-gradient(90deg,#fff 0 30vw,#061a31 30vw 100%)!important}.header .brand{gap:4px!important;flex-basis:30vw!important;width:30vw!important;max-width:30vw!important;padding-right:5px!important}.header .brand img{width:64px!important;max-width:64px!important;flex-basis:64px!important}.header .brandName{font-size:7px!important;max-width:calc(30vw - 73px)!important}.header .desktopNav{display:none!important}}
 @media(max-width:620px){.header .brand{gap:3px!important}.header .brand img{width:55px!important;max-width:55px!important;flex-basis:55px!important}.header .brandName{font-size:6px!important;max-width:calc(30vw - 61px)!important}}
 
+/* Company credentials: restore the two uploaded certificate documents. */
+.credentialsPage .credentialGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.credentialsPage .credentialGrid::before,.credentialsPage .credentialGrid::after{content:""!important;display:block!important;min-height:360px!important;border:1px solid rgba(6,26,49,.12)!important;border-radius:18px!important;background-color:#fff!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;box-shadow:0 18px 45px rgba(6,26,49,.10)!important}
+.credentialsPage .credentialGrid::before{background-image:url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/IMG_20260709_134407_383.jpg')!important}
+.credentialsPage .credentialGrid::after{background-image:url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/IMG_20260709_134415_805.jpg')!important}
+@media(max-width:700px){.credentialsPage .credentialGrid{grid-template-columns:1fr!important}.credentialsPage .credentialGrid::before,.credentialsPage .credentialGrid::after{min-height:300px!important}}
+
 @media(max-width:900px){main:has(.heroCatalog) .heroCatalogArt{height:500px!important;margin:0!important;border-radius:0 0 0 58px!important}main:has(.heroCatalog) .heroCatalogArt::before{inset:16px 16px 16px 0!important;border-radius:0 0 0 58px!important}}
 @media(max-width:620px){main:has(.heroCatalog) .heroCatalogArt{height:420px!important;border-radius:0 0 0 42px!important}main:has(.heroCatalog) .heroCatalogArt::before{inset:12px 12px 12px 0!important;border-radius:0 0 0 42px!important}}
