@@ -1,30 +1,22 @@
-/* Page-specific banner photography. Uses the original Cloudinary glove assets. */
-body:has(.manufacturingPage) .pageHero {
+/* Restore only the Manufacturing and Quality page hero banners. */
+
+.pageHero:has(+ .manufacturingPage) {
   background-image: linear-gradient(90deg, rgba(0,19,55,.98) 0%, rgba(0,19,55,.84) 46%, rgba(0,19,55,.28) 100%), url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-TG-06.png') !important;
-  background-size: cover !important;
   background-position: center !important;
-  background-repeat: no-repeat !important;
-  min-height: 420px !important;
-}
-body:has(.qualityGrid) .pageHero {
-  background-image: linear-gradient(90deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.72) 48%, rgba(255,255,255,.18) 100%), url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') !important;
   background-size: cover !important;
-  background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 420px !important;
 }
-body:has(.oemPage) .pageHero {
-  background-image: linear-gradient(90deg, rgba(0,19,55,.88), rgba(0,19,55,.42)), url('https://res.cloudinary.com/m2w7btvw/image/upload/c_fill,w_1600,h_700,g_auto,q_auto,f_auto/v1786821986/SLGI-MG-05.png') !important;
+
+.pageHero:has(+ .qualityGrid) {
+  background-image: linear-gradient(90deg, rgba(0,19,55,.98) 0%, rgba(0,19,55,.84) 46%, rgba(0,19,55,.28) 100%), url('https://res.cloudinary.com/m2w7btvw/image/upload/f_auto,q_auto/SLGI-GG-05.png') !important;
+  background-position: center !important;
   background-size: cover !important;
-  background-position: center !important;
   background-repeat: no-repeat !important;
-  min-height: 420px !important;
 }
-@media (max-width:700px) {
-  body:has(.manufacturingPage) .pageHero,
-  body:has(.qualityGrid) .pageHero,
-  body:has(.oemPage) .pageHero {
-    min-height: 360px !important;
+
+@media (max-width: 900px) {
+  .pageHero:has(+ .manufacturingPage),
+  .pageHero:has(+ .qualityGrid) {
     background-position: center !important;
   }
 }
