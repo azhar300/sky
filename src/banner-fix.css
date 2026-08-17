@@ -17,14 +17,18 @@ main:has(.heroCatalog) .heroCatalogArt .worldDisc,main:has(.heroCatalog) .heroCa
 main:has(.heroCatalog) .heroBlob.one,main:has(.heroCatalog) .heroBlob.two{display:none!important}
 main:has(.heroCatalog) .catalogCurve{background:#061a31!important}
 
-/* Header: 50/50 white + Skyline blue. */
-.header{background:linear-gradient(90deg,#ffffff 0%,#ffffff 50%,#061a31 50%,#061a31 100%)!important}
+/* Header: 30% white + 70% Skyline blue. */
+.header{background:linear-gradient(90deg,#ffffff 0%,#ffffff 30%,#061a31 30%,#061a31 100%)!important}
 .header .brand{display:flex!important;align-items:center!important;gap:12px!important;white-space:nowrap!important}
-.header .brand::after{content:'SKYLINE GLOBAL INDUSTRIES';font-family:var(--display,Arial,sans-serif)!important;font-size:15px!important;font-weight:800!important;letter-spacing:.08em!important;line-height:1!important;color:#061a31!important;text-shadow:none!important}
+.header .brand::after{display:none!important;content:none!important}
+.header .brandName{display:inline-flex!important;align-items:baseline!important;font-family:var(--display,Arial,sans-serif)!important;font-size:15px!important;font-weight:800!important;letter-spacing:.045em!important;line-height:1!important;white-space:nowrap!important}
+.header .skylineWord{color:#0057b8!important}
+.header .skylineWord span{color:#00d9ff!important}
+.header .globalWord{color:#000000!important}
 .header .brand img{max-width:150px!important;height:auto!important;display:block!important}
 .header .desktopNav a,.header .quoteBtn{position:relative;z-index:2}
-@media(max-width:900px){.header{background:linear-gradient(90deg,#fff 0%,#fff 50%,#061a31 50%,#061a31 100%)!important}.header .brand{gap:8px!important}.header .brand::after{font-size:11px!important;letter-spacing:.045em!important}.header .brand img{max-width:125px!important}}
-@media(max-width:620px){.header .brand::after{font-size:9px!important;max-width:145px!important;white-space:normal!important;line-height:1.05!important}.header .brand img{max-width:105px!important}}
+@media(max-width:900px){.header{background:linear-gradient(90deg,#ffffff 0%,#ffffff 30%,#061a31 30%,#061a31 100%)!important}.header .brand{gap:8px!important}.header .brandName{font-size:11px!important;letter-spacing:.035em!important}.header .brand img{max-width:125px!important}}
+@media(max-width:620px){.header .brandName{font-size:9px!important;letter-spacing:.02em!important;white-space:normal!important;line-height:1.05!important;max-width:145px!important}.header .brand img{max-width:105px!important}}
 
 @media(max-width:900px){main:has(.heroCatalog) .heroCatalogArt{height:500px!important;margin:0!important;border-radius:0 0 0 58px!important}main:has(.heroCatalog) .heroCatalogArt::before{inset:16px 16px 16px 0!important;border-radius:0 0 0 58px!important}}
 @media(max-width:620px){main:has(.heroCatalog) .heroCatalogArt{height:420px!important;border-radius:0 0 0 42px!important}main:has(.heroCatalog) .heroCatalogArt::before{inset:12px 12px 12px 0!important;border-radius:0 0 0 42px!important}}
