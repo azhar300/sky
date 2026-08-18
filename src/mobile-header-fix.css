@@ -1,4 +1,4 @@
-/* Final mobile header: dark navy, matching desktop. Logo + menu only. */
+/* Final mobile header: dark navy, matching desktop. Logo + company name + menu. */
 @media (max-width: 700px) {
   .header {
     background: #001337 !important;
@@ -10,9 +10,32 @@
     display: flex; align-items: center; justify-content: space-between; gap: 0;
     background: #001337 !important;
   }
-  .header .brand { min-width: 0 !important; width: auto !important; max-width: none !important; flex: 0 0 auto !important; display: flex; align-items: center; overflow: visible !important; }
-  .header .brandText, .header .brandName, .header .desktopNav, .header .navQuote { display: none !important; }
-  .header .brand img, .header .brandLogo, .header .logo { width: 68px !important; height: 68px !important; max-width: 68px !important; max-height: 68px !important; object-fit: contain !important; object-position: center !important; display: block !important; }
+  .header .brand { min-width: 0 !important; width: auto !important; max-width: none !important; flex: 0 1 auto !important; display: flex; align-items: center; overflow: visible !important; gap: 8px !important; }
+  .header .brandText, .header .desktopNav, .header .navQuote { display: none !important; }
+  .header .brand img, .header .brandLogo, .header .logo { width: 54px !important; height: 54px !important; max-width: 54px !important; max-height: 54px !important; object-fit: contain !important; object-position: center !important; display: block !important; flex: 0 0 54px !important; }
+  .header .brandName {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+  .header .brandName .skylineWord {
+    display: block !important;
+    font: 800 15px/1 var(--display) !important;
+    letter-spacing: -.02em !important;
+    color: #ffffff !important;
+  }
+  .header .brandName .globalWord {
+    display: block !important;
+    margin-top: 4px !important;
+    font: 800 7px/1 var(--display) !important;
+    letter-spacing: .16em !important;
+    color: #ffffff !important;
+  }
+  .header .brandName .skylineWord span { color: #ffffff !important; }
   .header .brandMark { width: 52px !important; height: 52px !important; flex: 0 0 52px !important; }
   .header .menuBtn { display: inline-flex !important; align-items: center; justify-content: center; width: 46px; height: 46px; padding: 0; margin: 0; flex: 0 0 46px; color: #ffffff !important; background: transparent !important; border: 0 !important; }
   .header .menuBtn svg { width: 31px; height: 31px; stroke-width: 1.8; }
