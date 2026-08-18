@@ -11,15 +11,15 @@ const certificateItems = [
   },
 ];
 
-// Use the same current Skyline logo already used in the site footer.
-const logo = '/images/logo.svg';
+// Exact current Skyline header logo asset, including its blue background treatment.
+const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/v1786908840/skyline/skyline/header-exact-logo.webp';
 
 function removeDuplicateCertificateImages(page: Element) {
   const certificateUrls = new Set(certificateItems.map((item) => item.image));
   page.querySelectorAll('img').forEach((img) => {
     const src = img.getAttribute('src') || '';
     const isCertificate = [...certificateUrls].some((url) => src.includes(url));
-    if (isCertificate && !img.closest('.certificateGrid')) {
+    if (isCertificate && !img.closest('.certificatePreview')) {
       const removable = img.closest('a, figure, article, .certificate, .credential, .certificateItem') || img;
       removable.remove();
     }
@@ -58,7 +58,7 @@ function enhanceCredentials() {
     </div>
   `;
 
-  // Remove any older certificate copies that another legacy enhancement may have left outside the cards.
+  // Remove legacy copies only; the two certificate cards above are preserved.
   removeDuplicateCertificateImages(page);
 }
 
