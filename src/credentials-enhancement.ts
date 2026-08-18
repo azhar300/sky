@@ -11,8 +11,8 @@ const certificateItems = [
   },
 ];
 
-// Use the exact same logo source as the live header/footer. The blue background is supplied by the credentials brand container.
-const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim/f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
+// Keep the exact logo artwork used by the header/footer; the credentials container supplies the blue background.
+const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim,f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
 const certificateFileNames = certificateItems.map((item) => item.image.split('/').pop()!.split('?')[0]);
 
 function isCertificateAsset(value: string) {
@@ -20,15 +20,12 @@ function isCertificateAsset(value: string) {
 }
 
 function removeDuplicateCertificateAssets(page: Element) {
-  // Remove duplicate certificate images/backgrounds/links anywhere on the page,
-  // except the two certificate cards created below.
   page.querySelectorAll('img, a, figure, [style]').forEach((element) => {
     if (element.closest('.certificateCard')) return;
     const imgSrc = element instanceof HTMLImageElement ? (element.getAttribute('src') || '') : '';
     const href = element instanceof HTMLAnchorElement ? (element.getAttribute('href') || '') : '';
     const style = element.getAttribute('style') || '';
     if (!isCertificateAsset(`${imgSrc} ${href} ${style}`)) return;
-
     const removable = element.closest('figure, article, section, a') || element;
     if (!removable.closest('.certificateCard')) removable.remove();
   });
@@ -43,7 +40,7 @@ function enhanceCredentials() {
     grid.setAttribute('data-enhanced', 'true');
     grid.innerHTML = `
       <div class="credentialsIntro">
-        <div class="credentialsBrand"><img src="${logo}" alt="Skyline Global Industries" /></div>
+        <div class="credentialsBrand"><div class="credentialsLogoFrame"><img src="${logo}" alt="Skyline Global Industries" /></div></div>
         <div>
           <div class="eyebrow">COMPANY CREDENTIALS</div>
           <h2>Verified company documentation.</h2>
