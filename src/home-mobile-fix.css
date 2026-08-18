@@ -1,0 +1,124 @@
+/* HOME MOBILE FIX — only the OEM band and Why Buyers section. Desktop is untouched. */
+@media (max-width: 820px) {
+  /* OEM / Private Label: force a true single-column mobile composition. */
+  .oemBandGrid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    gap: 34px !important;
+  }
+
+  .oemBandGrid > div:first-child {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .oemBand h2 {
+    font-size: clamp(42px, 12vw, 58px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.065em !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  .oemBand p {
+    max-width: 100% !important;
+  }
+
+  .oemRealVisual {
+    width: 100% !important;
+    height: 360px !important;
+    min-width: 0 !important;
+    transform: none !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .oemProductPhoto {
+    width: min(250px, 72vw) !important;
+    height: 300px !important;
+    max-width: 72vw !important;
+    object-fit: contain !important;
+  }
+
+  .oemPackageMock {
+    right: 2vw !important;
+    bottom: 38px !important;
+    width: 135px !important;
+    height: 185px !important;
+  }
+
+  /* Why Buyers Work With Us: stack the copy above the four principles. */
+  .commitGrid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 42px !important;
+    width: 100% !important;
+  }
+
+  .commitGrid > div,
+  .principleGrid {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .principleGrid {
+    grid-template-columns: 1fr 1fr !important;
+    overflow: hidden !important;
+  }
+
+  .principleGrid > div {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 20px 14px !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .oemBand {
+    padding: 76px 0 86px !important;
+  }
+
+  .oemBandGrid {
+    gap: 26px !important;
+  }
+
+  .oemBand h2 {
+    font-size: clamp(40px, 12.5vw, 54px) !important;
+  }
+
+  .oemRealVisual {
+    height: 320px !important;
+  }
+
+  .oemProductPhoto {
+    width: min(220px, 62vw) !important;
+    height: 270px !important;
+  }
+
+  .oemPackageMock {
+    width: 120px !important;
+    height: 170px !important;
+    right: 0 !important;
+    bottom: 28px !important;
+  }
+
+  .commitment {
+    padding: 76px 0 !important;
+  }
+
+  .commitGrid {
+    grid-template-columns: 1fr !important;
+    gap: 38px !important;
+  }
+
+  .principleGrid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .principleGrid > div {
+    min-height: 150px !important;
+    padding: 18px 12px !important;
+  }
+}
