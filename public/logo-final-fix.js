@@ -11,7 +11,7 @@
     });
 
     document.querySelectorAll('.footer .footerLogo').forEach((img) => {
-      img.src = logo(180);
+      img.src = logo(220);
       img.removeAttribute('srcset');
       img.classList.add('logo-cloudinary');
       img.setAttribute('data-skyline-logo', 'true');
