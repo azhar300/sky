@@ -1,6 +1,6 @@
 (() => {
   const base = 'https://res.cloudinary.com/m2w7btvw/image/upload';
-  const logo = (width) => `${base}/e_trim/f_auto,q_auto,w_${width}/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png`;
+  const logo = (width) => `${base}/e_trim,c_pad,b_rgb:001337,f_auto,q_auto,w_${width}/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png`;
 
   const apply = () => {
     document.querySelectorAll('.header .brand img').forEach((img) => {
