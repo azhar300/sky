@@ -11,14 +11,14 @@ const certificateItems = [
   },
 ];
 
-// Exact current Skyline header logo asset, including its blue background treatment.
-const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/v1786908840/skyline/skyline/header-exact-logo.webp';
+// Use the exact same Skyline logo asset used by the live header and footer.
+const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim/f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
 
 function removeDuplicateCertificateImages(page: Element) {
   const certificateUrls = new Set(certificateItems.map((item) => item.image));
   page.querySelectorAll('img').forEach((img) => {
     const src = img.getAttribute('src') || '';
-    const isCertificate = [...certificateUrls].some((url) => src.includes(url));
+    const isCertificate = [...certificateUrls].some((url) => src.includes(url.split('/v178')[0]) || src.includes(url));
     if (isCertificate && !img.closest('.certificatePreview')) {
       const removable = img.closest('a, figure, article, .certificate, .credential, .certificateItem') || img;
       removable.remove();
@@ -29,36 +29,38 @@ function removeDuplicateCertificateImages(page: Element) {
 function enhanceCredentials() {
   const page = document.querySelector('.credentialsPage');
   const grid = page?.querySelector('.credentialGrid');
-  if (!page || !grid || grid.getAttribute('data-enhanced') === 'true') return;
+  if (!page || !grid) return;
 
-  grid.setAttribute('data-enhanced', 'true');
-  grid.innerHTML = `
-    <div class="credentialsIntro">
-      <div class="credentialsBrand"><img src="${logo}" alt="Skyline Global Industries" /></div>
-      <div>
-        <div class="eyebrow">COMPANY CREDENTIALS</div>
-        <h2>Verified company documentation.</h2>
-        <p>Review Skyline Global Industries' official company documents below. Select a certificate to open the full-resolution document.</p>
+  if (grid.getAttribute('data-enhanced') !== 'true') {
+    grid.setAttribute('data-enhanced', 'true');
+    grid.innerHTML = `
+      <div class="credentialsIntro">
+        <div class="credentialsBrand"><img src="${logo}" alt="Skyline Global Industries" /></div>
+        <div>
+          <div class="eyebrow">COMPANY CREDENTIALS</div>
+          <h2>Verified company documentation.</h2>
+          <p>Review Skyline Global Industries' official company documents below. Select a certificate to open the full-resolution document.</p>
+        </div>
       </div>
-    </div>
-    <div class="certificateGrid">
-      ${certificateItems.map((item, index) => `
-        <a class="certificateCard" href="${item.image}" target="_blank" rel="noopener noreferrer">
-          <div class="certificatePreview">
-            <img src="${item.image}" alt="${item.title}" loading="lazy" />
-            <span class="certificateOpen">OPEN CERTIFICATE ↗</span>
-          </div>
-          <div class="certificateCardInfo">
-            <span>0${index + 1} · ${item.label}</span>
-            <h3>${item.title}</h3>
-            <p>Click to view the complete document.</p>
-          </div>
-        </a>
-      `).join('')}
-    </div>
-  `;
+      <div class="certificateGrid">
+        ${certificateItems.map((item, index) => `
+          <a class="certificateCard" href="${item.image}" target="_blank" rel="noopener noreferrer">
+            <div class="certificatePreview">
+              <img src="${item.image}" alt="${item.title}" loading="lazy" />
+              <span class="certificateOpen">OPEN CERTIFICATE ↗</span>
+            </div>
+            <div class="certificateCardInfo">
+              <span>0${index + 1} · ${item.label}</span>
+              <h3>${item.title}</h3>
+              <p>Click to view the complete document.</p>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    `;
+  }
 
-  // Remove legacy copies only; the two certificate cards above are preserved.
+  // Every time the page mutates, remove any certificate copies outside the two cards.
   removeDuplicateCertificateImages(page);
 }
 
