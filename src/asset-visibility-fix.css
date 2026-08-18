@@ -1,5 +1,6 @@
 /* Deterministic catalogue presentation fix. */
-.heroCatalogArt .heroProductCollage{position:absolute!important;inset:0!important;display:block!important;overflow:visible!important;z-index:8!important}
+/* Main hero: use the single SLGI-GG-04 Cloudinary image already defined by hero-redesign.css. */
+.heroCatalogArt .heroProductCollage{display:none!important}
 .heroCatalogArt .heroProductCollage .heroProduct{position:absolute!important;display:block!important;visibility:visible!important;opacity:1!important;object-fit:contain!important;mix-blend-mode:normal!important}
 .heroCatalogArt .heroProductCollage .p1{left:16px!important;bottom:82px!important;top:auto!important}
 .heroCatalogArt .heroProductCollage .p2{left:112px!important;bottom:109px!important;top:auto!important}
