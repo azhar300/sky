@@ -136,3 +136,12 @@
     color: #fff !important;
   }
 }
+
+/* Use the exact Cloudinary logo for the main header and footer on all screen sizes. */
+.header .brand img {
+  content: url('https://res.cloudinary.com/m2w7btvw/image/upload/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png') !important;
+}
+
+.footer .footerLogo {
+  content: url('https://res.cloudinary.com/m2w7btvw/image/upload/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png') !important;
+}
