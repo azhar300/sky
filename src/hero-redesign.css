@@ -15,9 +15,9 @@
 .heroActions .outlineBtn{border-color:rgba(255,255,255,.3)!important;color:#fff!important}.heroActions .outlineBtn:hover{background:#fff!important;color:var(--sg-deep)!important}
 .contactStrip{border-top-color:rgba(255,255,255,.16)!important}.contactStrip a,.contactStrip span{color:#c4d2df!important}
 
-/* Dedicated quality-banner image reused in the main hero; composition/alignment preserved. */
+/* Main hero uses the exact SLGI-GG-04 Cloudinary glove asset; composition/alignment unchanged. */
 .heroCatalogArt{height:700px!important;position:relative!important;isolation:isolate!important;background:#071a2c!important;border-radius:0 0 0 120px!important;box-shadow:-30px 0 90px rgba(0,0,0,.18)!important;overflow:hidden!important}
-.heroCatalogArt:before{content:""!important;position:absolute!important;inset:0!important;background-image:linear-gradient(90deg,rgba(0,19,55,.20) 0%,rgba(0,19,55,.08) 48%,rgba(0,19,55,.02) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821974/SLGI-GG-05.png')!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;z-index:0!important}
+.heroCatalogArt:before{content:""!important;position:absolute!important;inset:0!important;background-image:linear-gradient(90deg,rgba(0,19,55,.20) 0%,rgba(0,19,55,.08) 48%,rgba(0,19,55,.02) 100%),url('https://res.cloudinary.com/m2w7btvw/image/upload/v1786821915/SLGI-GG-04.png')!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;z-index:0!important}
 .heroCatalogArt:after{content:"01  /  SKYLINE GLOBAL INDUSTRIES"!important;position:absolute!important;right:30px!important;bottom:28px!important;color:rgba(255,255,255,.9)!important;font:800 8px var(--display)!important;letter-spacing:.22em!important;z-index:4!important;padding:10px 13px!important;border:1px solid rgba(255,255,255,.25)!important;background:rgba(3,15,28,.28)!important;backdrop-filter:blur(10px)!important}
 .heroCatalogArt .worldDisc,.heroCatalogArt .heroProductCollage,.heroCatalogArt .heroTag{display:none!important}
 .heroBlob.one,.heroBlob.two{display:none!important}.catalogCurve{height:60px!important;background:#061a31!important;border-top-color:rgba(255,255,255,.12)!important}
