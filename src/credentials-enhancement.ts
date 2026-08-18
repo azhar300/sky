@@ -11,18 +11,21 @@ const certificateItems = [
   },
 ];
 
-// Use the exact same Skyline logo asset used by the live header and footer.
-const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim/f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
+// Exact same logo treatment used by the live header/footer.
+const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim,c_pad,b_rgb:001337,f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
+
+const certificateFileNames = certificateItems.map((item) => item.image.split('/').pop()!.split('?')[0]);
+
+function isCertificateImage(img: HTMLImageElement) {
+  const src = img.getAttribute('src') || '';
+  return certificateFileNames.some((name) => src.includes(name));
+}
 
 function removeDuplicateCertificateImages(page: Element) {
-  const certificateUrls = new Set(certificateItems.map((item) => item.image));
   page.querySelectorAll('img').forEach((img) => {
-    const src = img.getAttribute('src') || '';
-    const isCertificate = [...certificateUrls].some((url) => src.includes(url.split('/v178')[0]) || src.includes(url));
-    if (isCertificate && !img.closest('.certificatePreview')) {
-      const removable = img.closest('a, figure, article, .certificate, .credential, .certificateItem') || img;
-      removable.remove();
-    }
+    if (!isCertificateImage(img) || img.closest('.certificatePreview')) return;
+    const removable = img.closest('a, figure, article, section, .certificate, .credential, .certificateItem') || img;
+    removable.remove();
   });
 }
 
@@ -60,7 +63,7 @@ function enhanceCredentials() {
     `;
   }
 
-  // Every time the page mutates, remove any certificate copies outside the two cards.
+  // Keep certificates only inside the two cards; remove legacy copies anywhere else on this page.
   removeDuplicateCertificateImages(page);
 }
 
