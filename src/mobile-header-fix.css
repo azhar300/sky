@@ -82,11 +82,12 @@
     line-height: 1 !important;
     font-weight: 800 !important;
     letter-spacing: .13em !important;
-    color: #1599b3 !important;
+    color: #fff !important;
   }
 
+  /* SKY stays white; LINE is cyan. */
   .header .brandName .skylineWord span {
-    color: #fff !important;
+    color: #1599b3 !important;
   }
 
   .header .brandMark {
