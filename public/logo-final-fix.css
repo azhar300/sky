@@ -1,0 +1,40 @@
+/* Logo integration only — preserves the rest of the site. */
+.header .brand img.logo-cloudinary,
+.header .brand img[data-skyline-logo] {
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px !important;
+  max-width: 58px !important;
+  min-height: 58px !important;
+  max-height: 58px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  flex: 0 0 58px !important;
+}
+
+.footer .footerLogo.logo-cloudinary,
+.footer .footerLogo[data-skyline-logo] {
+  width: 86px !important;
+  height: 86px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+@media (max-width: 700px) {
+  .header .brand img.logo-cloudinary,
+  .header .brand img[data-skyline-logo] {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    flex-basis: 42px !important;
+  }
+}
