@@ -11,21 +11,26 @@ const certificateItems = [
   },
 ];
 
-// Exact same logo treatment used by the live header/footer.
-const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim,c_pad,b_rgb:001337,f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
-
+// Use the exact same logo source as the live header/footer. The blue background is supplied by the credentials brand container.
+const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/e_trim/f_auto,q_auto,w_220/v1787041692/file_00000000b9d8821185be06c8af36dbc8.png';
 const certificateFileNames = certificateItems.map((item) => item.image.split('/').pop()!.split('?')[0]);
 
-function isCertificateImage(img: HTMLImageElement) {
-  const src = img.getAttribute('src') || '';
-  return certificateFileNames.some((name) => src.includes(name));
+function isCertificateAsset(value: string) {
+  return certificateFileNames.some((name) => value.includes(name));
 }
 
-function removeDuplicateCertificateImages(page: Element) {
-  page.querySelectorAll('img').forEach((img) => {
-    if (!isCertificateImage(img) || img.closest('.certificatePreview')) return;
-    const removable = img.closest('a, figure, article, section, .certificate, .credential, .certificateItem') || img;
-    removable.remove();
+function removeDuplicateCertificateAssets(page: Element) {
+  // Remove duplicate certificate images/backgrounds/links anywhere on the page,
+  // except the two certificate cards created below.
+  page.querySelectorAll('img, a, figure, [style]').forEach((element) => {
+    if (element.closest('.certificateCard')) return;
+    const imgSrc = element instanceof HTMLImageElement ? (element.getAttribute('src') || '') : '';
+    const href = element instanceof HTMLAnchorElement ? (element.getAttribute('href') || '') : '';
+    const style = element.getAttribute('style') || '';
+    if (!isCertificateAsset(`${imgSrc} ${href} ${style}`)) return;
+
+    const removable = element.closest('figure, article, section, a') || element;
+    if (!removable.closest('.certificateCard')) removable.remove();
   });
 }
 
@@ -63,8 +68,7 @@ function enhanceCredentials() {
     `;
   }
 
-  // Keep certificates only inside the two cards; remove legacy copies anywhere else on this page.
-  removeDuplicateCertificateImages(page);
+  removeDuplicateCertificateAssets(page);
 }
 
 if (document.readyState === 'loading') {
