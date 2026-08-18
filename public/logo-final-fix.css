@@ -15,8 +15,8 @@
 
 .footer .footerLogo.logo-cloudinary,
 .footer .footerLogo[data-skyline-logo] {
-  width: 86px !important;
-  height: 86px !important;
+  width: 102px !important;
+  height: 102px !important;
   object-fit: contain !important;
   object-position: center !important;
   display: block !important;
