@@ -11,7 +11,20 @@ const certificateItems = [
   },
 ];
 
-const logo = 'https://res.cloudinary.com/m2w7btvw/image/upload/v1786908840/skyline/skyline/header-exact-logo.webp';
+// Use the same current Skyline logo already used in the site footer.
+const logo = '/images/logo.svg';
+
+function removeDuplicateCertificateImages(page: Element) {
+  const certificateUrls = new Set(certificateItems.map((item) => item.image));
+  page.querySelectorAll('img').forEach((img) => {
+    const src = img.getAttribute('src') || '';
+    const isCertificate = [...certificateUrls].some((url) => src.includes(url));
+    if (isCertificate && !img.closest('.certificateGrid')) {
+      const removable = img.closest('a, figure, article, .certificate, .credential, .certificateItem') || img;
+      removable.remove();
+    }
+  });
+}
 
 function enhanceCredentials() {
   const page = document.querySelector('.credentialsPage');
@@ -44,6 +57,9 @@ function enhanceCredentials() {
       `).join('')}
     </div>
   `;
+
+  // Remove any older certificate copies that another legacy enhancement may have left outside the cards.
+  removeDuplicateCertificateImages(page);
 }
 
 if (document.readyState === 'loading') {
